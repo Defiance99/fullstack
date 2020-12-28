@@ -1,0 +1,231 @@
+/* %menu-template {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: $content-width;
+
+    .product-header {
+        font-family: $cyntho-next-regular;
+        font-size: 26px;
+        color: #383838;
+    }
+    .about-product {
+        max-width: 373px;
+                    margin-top: 12px;
+        font-family: $cyntho-next-light;
+        font-size: 14px;
+        text-align: center;
+    }
+    .shedule-days {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        width: 100%;
+        margin-top: 52px;
+        font-family: $cyntho-next-regular;
+        font-size: 16px;
+        color: #9E9E9E;
+
+        p:hover {
+            cursor: pointer;
+            color: #000;
+        }
+    }
+    .product-card-container {
+        display: flex;
+        position: relative;
+        width: 100%;
+        margin-top: 50px;
+
+        .custom-left-arrow {
+            position: absolute;
+            top: calc(50% - 7px);
+            left: -60px;
+            width: 14px;
+            height: 14px;
+            transform: rotate(45deg);
+            border-left: 2px $main-text-color solid;
+            border-bottom: 2px $main-text-color solid;
+        }
+
+        .custom-right-arrow {
+            position: absolute;
+            top: calc(50% - 7px);
+            right: -60px;
+            width: 14px;
+            height: 14px;
+            transform: rotate(-135deg);
+            border-left: 2px $main-text-color solid;
+            border-bottom: 2px $main-text-color solid;
+        }
+
+        .custom-left-arrow:hover, .custom-right-arrow:hover {
+            cursor: pointer;
+        }
+
+        .product-card {
+            margin-right: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 20px rgba(167, 167, 167, 0.26);
+        }
+        .product-card:last-child {
+            margin-right: 0;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 253px;
+
+            .description-product {
+                margin-top: 16px;
+                width: 100%;
+                max-width: 270px;
+                font-family: $cyntho-next-regular;
+                font-size: 14px;
+                text-align: center;
+            }
+            .cost-product {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 16px;
+                color: #383838;
+
+                p:first-child {
+                    font-family: $cyntho-next-regular;
+                    font-size: 14px;
+                    padding-top: 2px;
+                }
+                p:last-child {
+                    font-family: $cyntho-next-light;
+                    font-size: 18px;
+                }
+            }
+            .payment-product {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 16px;
+                margin-bottom: 15px;
+
+                .quantity-products {
+                    display: flex;
+                    align-items: flex-end;
+
+                    .v-model-quantity {
+                        margin: 0 4px;
+                        font-family: $cyntho-next-regular;
+                        font-size: 24px;
+                        color: $main-text-color;
+                    }
+                    .minus-symbol {
+                        font-family: $cyntho-next-semibold;
+                        font-size: 34px;
+                        color: $title-passive-color;
+                    }
+                    .plus-symbol {
+                        height: 34px;
+                        font-family: $cyntho-next-semibold;
+                        font-size: 34px;
+                        color: $title-passive-color;
+                    }
+                    .minus-symbol:hover, .plus-symbol:hover, .v-model-quantity:hover {
+                        cursor: pointer;
+                    }
+                }
+                
+                .button-primary {
+                    @extend %button-primary;
+                }
+                .button-primary:hover {
+                    cursor: pointer;
+                    background-color: $active-color;
+                }
+            }
+            .havent-product {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 25px;
+                margin-bottom: 24px;
+                font-family: $cyntho-next-regular;
+                font-size: 14px;
+                color: #DB7F55;
+            }
+        }
+    }
+}
+ */
+
+
+.products-range {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-top: 80px;
+    padding-top: 50px;
+    padding-bottom: 80px;
+    background-color: #FAFAFA;
+
+    .transition-image-top {
+        display: flex;
+        align-items: flex-start;
+        position: absolute;
+        top: -30px;
+        width: 100%;
+        height: 30px;
+        background: url('../images/transition-part2.png');
+        background-size: cover;
+        z-index: 10;
+    }
+
+    .transition-image-bottom {
+        display: flex;
+        align-items: flex-start;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 30px;
+        background: url('../images/transition-back-img.png');
+        background-size: cover;
+        z-index: 10;
+    }
+    .products-range-container {
+        @extend %menu-template;
+
+        .product-card-container {
+            flex-wrap: nowrap !important;
+            overflow: hidden;
+        }
+        .shedule-days {
+            flex-wrap: nowrap !important;
+            overflow: hidden;
+            @media (max-width: 900px) {
+                p {
+                    max-width: 170px !important;
+                    margin-right: 53px !important;
+                }
+            }
+
+            @media (max-width: 500px) {
+                margin-top: 25px !important;
+
+                p {
+                    font-size: 10px !important;
+                }    
+            }
+        }
+    }
+
+    @media (max-width: 1300px) {
+        .custom-left-arrow, .custom-right-arrow {
+            display: none;
+        }
+    }
+}

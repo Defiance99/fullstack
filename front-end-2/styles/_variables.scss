@@ -1,0 +1,141 @@
+$content-width: 1169px;
+$active-color: #F1813D;
+$title-passive-color: #F4A17B;
+$main-text-color: #383838;
+$padding-low-screen: 15px;
+
+/* Shared classes */
+.showBurgerMenu {
+    width: 235px !important;
+    border: 1px black solid;
+}
+.top-line__Burger-menu {
+    &::after {
+        transform: translateY(12.5px) rotate(45deg);
+    }
+}
+.middle-line__Burger-menu {
+    &::after {
+        opacity: 0;
+    }
+}
+.bottom-line__Burger-menu {
+    &::after {
+        transform: translateY(-12.5px) rotate(-45deg);
+    }
+}
+
+/* Fonts Block */
+
+@font-face {
+    font-family: 'Cyntho Next bold';
+    src: url('../fonts/CynthoNext-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next';
+    src: url('../fonts/CynthoPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next light';
+    src: url('../fonts/CynthoNext-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next Medium';
+    src: url('../fonts/CynthoNext-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+$cyntho-next-bold: 'Cyntho Next bold';
+$cyntho-next-semibold: 'Cyntho Next SemiBold';
+$cyntho-next-normal: 'Cyntho Next';
+$cyntho-next-light: 'Cyntho Next light';
+$cyntho-next-medium: 'Cyntho Next medium';
+
+
+/* Extends Block */
+
+%efffect-header-items-on-hover {
+    &:hover {
+        box-shadow: inset 0px 0px 10px rgba(213, 92, 92, 0.7);
+        background-color: #f4b295;
+
+        img {
+            transform: scale(0.9);
+        }
+    }
+}
+
+%list-products {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 67px;
+    width: 179px;
+    height: 0;
+    text-align: center;
+    list-style: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px rgba(244, 161, 123, 0.18);
+    background: #FFFFFF;
+    z-index: 10;
+
+    transition: height 300ms ease-in;
+
+    li {
+        position: relative;
+        margin: 0 auto;
+        width: 150px;
+        height: 0px;
+        /* height: 42px; */
+        line-height: 42px;
+        opacity: 0;
+        visibility: hidden;
+        font-family: $cyntho-next-light;
+        font-size: 14px;
+        color: #383838;
+        border-bottom: 0.5px #E3E3E3 solid;
+    }
+    li:first-child {
+        padding-top: 13px;
+        transition: all 50ms ease-in;
+    }
+    li:nth-child(2) {
+        transition: all 50ms ease-in 50ms;
+    }
+    li:nth-child(3) {
+        transition: all 50ms ease-in 100ms;
+    }
+    li:nth-child(4) {
+        transition: all 50ms ease-in 150ms;
+    }
+    li:nth-child(5) {
+        transition: all 50ms ease-in 200ms;
+    }
+    li:last-child {
+        padding-bottom: 3px;
+        border-bottom: none;
+        transition: all 50ms ease-in 250ms;
+    }
+    li:hover {
+        font-family: $cyntho-next-medium;
+    }
+}
+
+%additional-info-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 23px;
+    font-family: $cyntho-next-semibold;
+    font-size: 12px;
+    color: #FFF;
+    border-radius: 5px;
+}

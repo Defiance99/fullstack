@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Cyntho Next bold';
+    src: url('../fonts/CynthoNext-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next SebiBold';
+    src: url('../fonts/CynthoNext-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next light';
+    src: url('../fonts/CynthoNext-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next Regular';
+    src: url('../fonts/CynthoPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$cyntho-next-bold: 'Cyntho Next bold';
+$cyntho-next-semibold: 'Cyntho Next SemiBold';
+$cyntho-next-light: 'Cyntho Next light';
+$cyntho-next-regular: 'Cyntho Next Regular';
+
+
+
+%button-primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $cyntho-next-semibold;
+    font-size: 14px;
+    color: white;
+    border-radius: 5px;
+    background-color: $title-passive-color;
+}
+
+
+.about-project {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 88px;
+    margin-bottom: 95px;
+
+    .about-project-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: $content-width;  
+
+        .left-side-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .header-text {
+                font-family: $cyntho-next-regular;
+                font-size: 26px;
+                color: #383838;
+            }
+            .about-project-text {
+                width: 100%;
+                max-width: 465px;
+                margin-top: 15px;
+                margin-bottom: 38px;
+                font-family: $cyntho-next-light;
+                font-size: 14px;
+            }
+            .button-primary {
+                @extend %button-primary;
+                padding: 8px 35px;
+            }
+            .button-primary:hover {
+                cursor: pointer;
+                background-color: $active-color;
+            }
+        }
+        
+        .right-side-image {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            max-width: 600px;
+            max-height: 400px;
+            /* background: url('../images/about-project-img.png') no-repeat;
+            background-size: contain; */
+            text-align: right;
+        }
+    }
+
+    @media(max-width: $content-width) {
+        .about-project-container {
+            margin: 0 $padding-low-screen;
+        }
+    }
+    @media (max-width: 850px) {
+        .about-project-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        .left-side-block {
+            align-items: center;
+            text-align: center;
+        }
+        .right-side-image {
+            margin-top: 59px;
+            max-width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+        }
+    } 
+    @media (max-width: 450px) {
+        .right-side-image {
+            max-width: 100% !important;
+            height: 200px !important;
+        }
+    }
+}

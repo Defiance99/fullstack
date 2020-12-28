@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'preview-product';
+@import 'products-menu';
+@import 'products-range';
+@import 'about-project';
+@import 'eco-products-section';
+@import 'reviews-section';
+@import 'footer';
+@import 'fonts';
+
+@import './modals/messages-modal';
+@import './modals/modals';
+
+// Header
+@import './header/header-nav';
+@import './header/mobile/header-mobile';
+
+* {
+    padding: 0;
+    margin: 0;
+    /* overflow-x: hidden; */
+}
+
+.show {
+    display: initial !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}

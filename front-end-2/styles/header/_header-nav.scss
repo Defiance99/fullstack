@@ -1,0 +1,433 @@
+.main-nav_Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-height: 130px;
+    background-color: #FFF;
+
+    .main-nav-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: $content-width;
+
+        .main-nav-title {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 0.5px solid #DADADA;
+
+            .left-side-block {
+                display: flex;
+                align-items: center;
+
+                .phone-contact {
+                    font-family: $cyntho-next-medium;
+                    font-size: 20px;
+                    width: 200px;
+                    height: 24px;
+                }
+            }
+
+            .right-side-block {
+                display: flex;
+                justify-content: flex-end;
+                position: relative;
+                width: 100%;
+                max-width: 740px;
+                
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    width: 62px;
+                    height: 62px;
+
+                    img {
+                        width: 19px;
+                        height: 19px;
+                    }
+                }
+                .search-logo-container, .auth-logo-container, .basket-logo-container {
+                    @extend %efffect-header-items-on-hover;
+                    transition: 250ms;
+                }
+                div:nth-child(n+2):hover {
+                    cursor: pointer;
+                }
+                .instagram-logo-container {
+                    position: relative;
+
+                    img, span {
+                        transition: 250ms;
+                        position: absolute;
+                    }
+
+                    img, span:hover {
+                        cursor: pointer;
+                    }
+
+                    .instagram-logo-inside {
+                        width: 10px;
+                        height: 10px;
+                    }
+                    .instagram-logo-dot {
+                        top: 26px;
+                        left: 35px;
+                        padding: 1px;
+                        background-color: #F4A17B;
+                        border-radius: 100%;
+                    }
+
+                }
+                .search-logo-container {
+                    background: #FFCBB4;
+                }
+                .auth-logo-container {
+                    display: flex;
+                    flex-direction: column;
+                    background: #FAB798;
+
+                    .auth-logo-top {
+                        width: 9.2px;
+                        height: 9.68px;
+                    }
+                    .auth-logo-bottom {
+                        width: 17.71px;
+                        height: 8.3px;
+                    }
+                }
+                .basket-logo-container {
+                    background: #F4A17B;
+                }
+            }
+        }
+
+        .main-nav-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+            font-family: $cyntho-next-light;
+            font-size: 14px;
+
+            .left-side-block {
+                display: flex;
+                align-items: center;
+
+                .title-text {
+                    font-size: 22px;
+                    width: 150px;
+                    height: 46px;
+                    line-height: 25px;
+                }
+            }
+
+            .right-side-block {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                width: 100%;
+                max-width: 740px;
+                height: 100%;
+
+                div:nth-child(n+4) {
+                   text-align: right;
+                }
+                .menu-list-block {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    margin-right: 20px;
+                    height: 100%;
+                    
+                    .list-products {
+                        @extend %list-products;
+                        right: -65px;
+                    }
+                }
+                .shop-list-block {
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                    margin-right: 23px;
+                    text-align: center;
+                    height: 100%;
+
+                    .list-products {
+                        @extend %list-products;
+                        right: -55px;
+                    }
+                }
+                .menu-list-block:hover .list-products, .shop-list-block:hover .list-products {
+                    height: 273px;
+                }
+                .menu-list-block:hover .list-products li, .shop-list-block:hover .list-products li {
+                    opacity: 1;
+                    height: 42px;
+                    visibility: inherit;
+                }
+                .shop-list-block::after, .menu-list-block::after {
+                    content: '';
+                    position: absolute;
+                    right: -20px;
+                    bottom: 33px;
+                    padding: 4px;
+                    transform: rotate(45deg);
+                    border-right: 1px #A5A5A5 solid;
+                    border-bottom: 1px #A5A5A5 solid;
+                }
+                div:hover {
+                    cursor: pointer;
+                    font-family: $cyntho-next-medium;
+                }
+            }
+        }
+    }
+
+    .custom-burger-menu {
+        display: none;
+        position: absolute;
+        width: 27px;
+        height: 27px;
+        top: 84px;
+        left: calc(100% - 43px);
+        
+        .top-line, .middle-line, .bottom-line {
+            position: relative;
+        }
+        .top-line {
+            top: 0;
+        }
+        .middle-line {
+            top: calc(50% - 2px);
+        }
+        .bottom-line {
+            top: calc(100% - 2px);
+        }
+        .top-line::after, .middle-line::after, .bottom-line::after {
+            content: '';
+            position: absolute;
+            width: 27px;
+            height: 2px;
+            background-color: black;
+
+            transition: all 200ms ease;
+        }
+    }
+
+    /* .custom-burger-menu:hover {
+        cursor: pointer;
+    }
+    .custom-burger-menu:hover .top-line::after {
+        transform: translateY(12.5px) rotate(45deg);
+    }
+    .custom-burger-menu:hover .middle-line::after {
+        opacity: 0;
+    }
+    .custom-burger-menu:hover .bottom-line::after {
+        transform: translateY(-12.5px) rotate(-45deg);
+    } */
+
+    /* .custom-burger-menu:hover .mobile-nav-menu {
+            width: 238px !important;
+    } */
+
+    .mobile-nav-menu {
+        display: none;
+    }
+
+    @media (max-width: $content-width) {
+        .main-nav-container {
+            padding: 0 0 0 $padding-low-screen;
+        }
+    }
+    @media (max-width: 800px) {
+        .main-nav-menu .right-side-block {
+            display: none !important;
+        }
+    
+        .mobile-nav-menu {
+            display: initial;
+            position: absolute;
+            width: 0;   
+            min-height: 362px;
+            top: 136px;
+            right: -2px;
+            overflow: hidden;
+            font-family: $cyntho-next-light;
+            font-size: 14px;
+            list-style: none;
+            z-index: 25;
+            border-radius: 5px;
+            background-color: #FFF;
+    
+            transition: all 300ms ease-in;
+    
+            > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                width: 205px;
+                min-height: 54px;
+                border-bottom: 0.5px solid #DADADA;
+            }
+    
+            > div:last-child {
+                border-bottom: none;
+            }
+    
+            div:hover {
+                cursor: pointer;
+                font-family: $cyntho-next-medium;
+            }
+    
+            .first-level-menu {
+                border-bottom: none;
+            }
+    
+            .first-level-menu-elem {
+                width: 205px;
+                text-align: center;
+                padding: 34px 0 19px 0;
+                border-bottom: 0.5px solid #DADADA;
+            }
+    
+            .shop-text-mark {
+                padding: 18px 0 15px 0;
+            }
+    
+            .first-level-menu-elem::after {
+                content: '';
+                position: absolute;
+                padding: 4px;
+                transform: rotate(45deg);
+                border-right: 1px #A5A5A5 solid;
+                border-bottom: 1px #A5A5A5 solid;
+            }
+    
+            .first-level-menu-elem::after {
+                right: 78px;
+            }
+    
+            .shop-text-mark::after {
+                right: 67px !important;
+            }
+            
+            .first-level-menu:hover .second-level-menu {
+                visibility: visible;
+                height: 247px;
+            }
+    
+            .second-level-menu {
+                visibility: hidden;
+                height: 0;
+                width: 100%;
+                overflow: hidden;
+                list-style: none;
+                border-bottom: 0.5px solid #DADADA;
+    
+                transition: all 300ms ease;
+    
+                li {
+                    width: 150px;
+                    height: 19px; //19
+                    padding: 10px 0px;
+                    margin: 0 auto;
+                    font-family: $cyntho-next-light;
+                    font-size: 12px;
+                    font-weight: 300;
+                    line-height: 20px;
+                    text-align: center;
+                    color: #6B6B6B;
+                    border-bottom: 0.5px solid #E3E3E3;
+                }
+                li:first-child {
+                    padding-top: 15px;
+                    transition: all 50ms ease-in;
+                }
+                li:last-child {
+                    padding-bottom: 15px;
+                    border-bottom: none;
+                }
+                li:hover {
+                    cursor: pointer;
+                    font-family: $cyntho-next-medium;
+                }
+            }
+        }
+        .custom-burger-menu {
+            display: initial;
+        }
+    }
+    @media (max-width: 500px) {
+        .main-nav-title {
+    
+            .left-side-block {
+            max-width: 100px;
+    
+                .phone-contact {
+                    font-size: 10px !important;
+                    line-height: 24px;
+                }
+            }
+    
+            .right-side-block {
+                height: 45px;
+    
+                div {
+                    max-width: 45px !important;
+                    max-height: 45px !important;
+                }
+            }
+        }
+        
+        .main-nav-menu {
+            height: 50px !important;
+    
+            .left-side-block {
+                .brand-logo {
+                    width: 22px;
+                    height: 30px;
+                }
+    
+                .title-text {
+                    font-size: 16px !important;
+                }
+            }
+        }
+    
+        .mobile-nav-menu {
+            top: 106px;
+        }
+        .custom-burger-menu {
+            top: 58px !important;
+            left: calc(100% - 36px) !important;
+        }
+        .instagram-logo-dot {
+            top: 16px !important;
+            left: 26px !important;
+        }
+    }
+    @media (max-width: 300px) {
+        .main-nav-title {
+            height: 40px !important;
+    
+            .right-side-block {
+                div {
+                    width: 40px !important;
+                    height: 40px !important;
+                }
+            }
+        }
+        .instagram-logo-dot {
+            left: 25px !important;
+        }
+    }
+}
+

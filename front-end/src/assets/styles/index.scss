@@ -1,0 +1,67 @@
+@import 'variables';
+@import 'extends';
+@import 'preview-product';
+@import 'products-menu';
+@import 'products-range';
+@import 'about-project';
+@import 'eco-products-section';
+@import 'reviews-section';
+@import 'footer';
+
+@import './modals/messages-modal';
+@import './modals/modals';
+
+// Header
+@import './header/header-nav';
+@import './header/mobile/header-mobile';
+
+// Admin Panel 
+@import './admin-panel/admin-panel';
+@import './admin-panel/create-product-panel';
+
+
+// Mobile
+@import './admin-panel/mobile/admine-panel.mobile';
+
+* {
+    padding: 0;
+    margin: 0;
+    /* overflow-x: hidden; */
+
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+.show {
+    display: initial !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.active-admin-page {
+    background:#007BFF;
+
+    &:hover {
+        background: #007BFF !important;
+
+        .mat-icon, span {
+            color: #FFF !important;
+        }
+    }
+}
+
+.hor-centering-elems {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 160px;
+
+    span {
+        margin-left: 15px;
+        color: #FFF;
+    }
+}

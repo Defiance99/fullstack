@@ -1,0 +1,11 @@
+@media (max-width: 790px) {
+    .left-side-admin-panel {
+        width: 100%;
+        max-width: 250px;
+        z-index: 1;
+    }
+    .right-side-admin-panel {
+        left: 0;
+        width: 100%;
+    }
+}

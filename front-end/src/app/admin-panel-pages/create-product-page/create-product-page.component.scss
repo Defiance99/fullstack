@@ -1,0 +1,28 @@
+.dn {
+    display: none;
+}
+
+.cost-product-form, .weight-product-form {
+    width: 70px;
+}
+
+.cost-product p, .description-product p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px !important;
+}
+
+/* .create-product-button {
+    margin: 0 auto;
+    font-size: 18px !important;
+} */
+
+.create-button-wrapper {
+    margin-top: 10px;
+}
+
+.default-size-img {
+    width: 100%;
+    height: 100%;
+}

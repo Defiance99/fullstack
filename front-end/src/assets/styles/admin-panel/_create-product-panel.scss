@@ -1,0 +1,28 @@
+.admin-panel-content-container {
+
+    .product-params-wrapper {
+        height: 60px;
+        margin-bottom: 50px;
+        z-index: 1;
+        background: #FFF;
+
+
+        .product-params {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            padding: 0 15px;
+        }
+    }
+
+    .create-product-wrapper {
+        display: flex;
+        justify-content: center;
+        margin: 0 15px;
+        padding: 20px 15px;
+        border-radius: 5px;
+        background: #FFF;
+        @extend %product-card;
+    }
+}

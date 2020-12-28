@@ -1,0 +1,48 @@
+.modal-messages-container {
+    position: fixed;
+    right: 10%;
+    top: 20%;
+    font-family: $cyntho-next-semibold;
+    z-index: 20;
+
+    .modal-message {
+        position: relative;
+        padding: 15px 13px;
+        margin-top: 15px;
+        font-size: 18px;
+        color: #FFF;
+        cursor: pointer;
+        border-radius: 10px;
+        background: #c16f49;
+
+        animation-name: addToModalList;
+        animation-duration: 500ms;
+    }
+
+    @keyframes addToModalList {
+        from {
+            left: 60px;
+        }
+
+        to {
+            left: 0;
+        }
+    }
+}
+
+.hiddenModalMessage {
+    animation-name: removeFromModalList !important;
+    animation-duration: 300ms;
+}
+
+@keyframes removeFromModalList {
+    from {
+        left: 0;
+        opacity: 1;
+    }
+
+    to {
+        left: 60px;
+        opacity: 0;
+    }
+}

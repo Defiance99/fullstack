@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'Cyntho Next bold';
+    src: url('../fonts/CynthoNext-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next SebiBold';
+    src: url('../fonts/CynthoNext-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next light';
+    src: url('../fonts/CynthoNext-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+$cyntho-next-bold: 'Cyntho Next bold';
+$cyntho-next-semibold: 'Cyntho Next SemiBold';
+$cyntho-next-light: 'Cyntho Next light';
+
+
+.preview-product_Header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 556px;
+    background: url('../images/backgorund-color_MainPage.png');
+    background-size: cover;
+    background-position: center;
+
+    .preview-product-container {
+        width: 100%;
+        max-width: $content-width;
+
+        .preview-product {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 478px;
+            height: 268px;
+
+            .title-text {
+                font-family: $cyntho-next-bold;
+                font-size: 48px;
+            }
+            .about-text {
+                font-family: $cyntho-next-light;
+                font-size: 14px;
+            }
+            .button-primary {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                max-width: 184px;
+                height: 51px;
+                font-family: $cyntho-next-semibold;
+                font-size: 14px;
+                color: white;
+                border-radius: 5px;
+                background-color: $title-passive-color;
+            }
+            .button-primary:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .transition-image {
+        display: flex;
+        align-items: flex-start;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 30px;
+        background: url('../images/transition-back-img.png');
+        background-size: cover;
+        z-index: 10;
+    }
+}
+
+@media (max-width: $content-width) {
+    .preview-product {
+        padding: 0 0 0 $padding-low-screen;
+    }
+}
+@media (max-width: 500px) {
+    .preview-product_Header  {
+        max-height: 350px;
+    }
+
+    .preview-product {
+        max-width: 350px !important;
+        max-height: 180px;
+
+        .title-text {
+            max-width: 167px !important;
+            font-size: 22px !important;
+        }
+        .about-text {
+            max-width: 157px;
+            padding: 5px 0 20px 0;
+            font-size: 10px !important;
+        }
+        .button-primary {
+            width: 116px !important;
+            height: 32px !important;
+            font-size: 10px !important;
+        }
+    }
+}
+@media (max-width: 30px) {
+    .preview-product_Header  {
+        max-height: 350px;
+    }
+
+    .preview-product {
+        max-width: 350px !important;
+        max-height: 140px;
+
+        .title-text {
+            font-size: 22px !important;
+        }
+        .about-text {
+            font-size: 10px !important;
+        }
+        .button-primary {
+            width: 116px !important;
+            height: 32px !important;
+            font-size: 10px !important;
+        }
+    }
+}

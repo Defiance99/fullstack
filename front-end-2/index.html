@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="./scripts/routing.js"></script>
+</head>
+<body>
+
+
+    <!-- Modal window Begin -->
+
+    <section class="modal-window">
+        <div class="modal-window-field"></div>
+        
+        <!-- Review Modal window Begin -->
+        <div class="review-modal-window-container">
+            <div class="review-modal-window-form">
+
+                <div class="modal-window-button-close">
+                    <span class="left-side-close-button"></span>
+                    <span class="right-side-close-button"></span>
+                </div>
+
+                <h2 class="review-title">Оставьте ваш отзыв:</h2>
+                <div class="review-form">
+                    <div class="name-review-form element-review-form">
+                        <div class="left-side-review-form">
+                            <span>Ваше имя:</span>
+                        </div>
+                        <div class="right-side-review-form">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="email-review-form element-review-form">
+                        <div class="left-side-review-form">
+                            <span>Ваш email:</span>
+                        </div>
+                        <div class="right-side-review-form">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="product-review-form element-review-form">
+
+                    </div>
+
+                    <div class="submit-review-form"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Review Modal window Close -->
+    </section>
+
+    <!-- Modal window Close -->
+
+    <!-- Modal Message Begin -->
+        <div class="modal-messages-container">
+        </div>
+
+    <!-- Modal Message Close -->
+
+
+    <section class="main-nav_Header">
+        <div class="main-nav-container">
+            <div class="custom-burger-menu">
+                <span class="top-line"></span>
+                <span class="middle-line"></span>
+                <span class="bottom-line"></span>
+            </div>
+            <div class="main-nav-title">
+                <div class="left-side-block">
+                    <div class="phone-contact">+ 375 (33) 375-07-60</div>
+                </div>
+                <div class="right-side-block">
+                    <div class="instagram-logo-container">
+                        <img src="./images/instagram-logo-outside.png" alt="instagram logo" class="instagram-logo-outside">
+                        <img src="./images/instagram-logo-inside.png" alt="instagram logo" class="instagram-logo-inside">
+                        <span class="instagram-logo-dot"></span>
+                    </div>
+                    <div class="search-logo-container">
+                        <img src="./images/search-logo.png" alt="search logo" class="search-logo"> 
+                    </div>
+                    <div class="auth-logo-container">
+                        <img src="./images/top-user-logo.png" alt="auth logo" class="auth-logo-top"> 
+                        <img src="./images/bottom-user-logo.png" alt="auth logo" class="auth-logo-bottom"> 
+                    </div>
+                    <div class="basket-logo-container">
+                        <img src="./images/basket-logo.png" alt="search logo" class="basket-logo"> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-nav-menu">
+                <div class="left-side-block">
+                    <img src="./images/Vector.png" alt="brand logo" class="brand-logo"> 
+                    <p class="title-text">
+                        НОВАЯ<br> 
+                        СТОЛОВАЯ
+                    </p>
+                </div>
+                <div class="right-side-block">
+                    <div class="menu-list-block">
+                        <span class="">МЕНЮ</span>
+                        <ul class="list-products">
+                            <li>ЗАВТРАКИ</li>
+                            <li>ОБЕДЫ</li>
+                            <li>ДЕСЕРТЫ</li>
+                            <li>ХЛЕБ И ВЫПЕЧКА</li>
+                            <li>СОУСЫ И НАМАЗКИ</li>
+                            <li>НАПИТКИ</li>
+                        </ul>
+                    </div>
+                    <div class="shop-list-block">
+                        <span>МАГАЗИН</span>
+                        <ul class="list-products">
+                            <li>ЗАВТРАКИ</li>
+                            <li>ОБЕДЫ</li>
+                            <li>ДЕСЕРТЫ</li>
+                            <li>ХЛЕБ И ВЫПЕЧКА</li>
+                            <li>СОУСЫ И НАМАЗКИ</li>
+                            <li>НАПИТКИ</li>
+                        </ul>
+                    </div>
+                    <div>ПОДПИСКА</div>
+                    <div>ДОСТАВКА</div>
+                    <div>ПАРТНЕРАМ</div>
+                    <div>КОНТАКТЫ</div>
+                </div>
+            </div>
+            <div class="mobile-nav-menu">
+                <div class="first-level-menu list-menu-products">
+                    <span class="first-level-menu-elem">МЕНЮ</span>
+                    <ul class="second-level-menu">
+                        <li>ЗАВТРАКИ</li>
+                        <li>ОБЕДЫ</li>
+                        <li>ДЕСЕРТЫ</li>
+                        <li>ХЛЕБ И ВЫПЕЧКА</li>
+                        <li>СОУСЫ И НАМАЗКИ</li>
+                        <li>НАПИТКИ</li>
+                    </ul>
+                </div>
+                <div class="first-level-menu shop-list-products">
+                    <span class="first-level-menu-elem shop-text-mark">МАГАЗИН</span>
+                    <ul class="second-level-menu">
+                        <li>ЗАВТРАКИ</li>
+                        <li>ОБЕДЫ</li>
+                        <li>ДЕСЕРТЫ</li>
+                        <li>ХЛЕБ И ВЫПЕЧКА</li>
+                        <li>СОУСЫ И НАМАЗКИ</li>
+                        <li>НАПИТКИ</li>
+                    </ul>
+                </div>
+                <div>ПОДПИСКА</div>
+                <div>ДОСТАВКА</div>
+                <div>ПАРТНЕРАМ</div>
+                <div>КОНТАКТЫ</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="preview-product_Header">
+        <div class="preview-product-container">
+            <div class="preview-product">
+                <p class="title-text">Medium length display headline</p>
+                <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.</p>
+                <a class="button-primary">ПОДРОБНЕЕ</a>
+            </div>
+        </div>
+        <div class="transition-image"></div>
+    </section>
+    
+    <section class="dinners-menu">
+        <div class="dinners-menu-container">
+            <div class="product-header">ОБЕДЫ</div>
+            <div class="about-product">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</div>
+            <div class="shedule-days">
+                <div class="shedule-days-wrapper">
+                    <p>ПОНЕДЕЛЬНИК</p>
+                    <p>ВТОРНИК</p>
+                    <p>СРЕДА</p>
+                    <p>ЧЕТВЕРГ</p>
+                    <p>ПЯТНИЦА</p>
+                    <p>СУББОТА</p>
+                    <p>ВОСКРЕСЕНЬЕ</p>
+                </div>
+            </div>
+            <div class="product-card-container">
+                <span class="custom-left-arrow"></span>
+                <span class="custom-right-arrow"></span>
+
+                <div class="product-card-wrapper">
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>2.5р</p>
+                            </div>
+                            <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>2.5р</p>
+                            </div>
+                            <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>2.5р</p>
+                            </div>
+                            <!-- <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div> -->
+                            <div class="havent-product">
+                                <p>Tолько во вторник</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>2.5р</p>
+                            </div>
+                            <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <section class="products-range">
+        <div class="transition-image-top"></div>
+        <div class="products-range-container">
+            <div class="product-header">МЕНЮ</div>
+            <div class="about-product">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</div>
+            <div class="shedule-days">
+                <div class="shedule-days-wrapper">
+                    <p>ДЕСЕРТЫ</p>
+                    <p>ХЛЕБ И ВЫПЕЧКА</p>
+                    <p>СОУСЫ И НАМАЗКИ</p>
+                    <p>НАПИТКИ</p>
+                    <p>ЗАВТРАКИ</p>
+                </div>
+            </div>
+            <div class="product-card-container">
+                <span class="custom-left-arrow"></span>
+                <span class="custom-right-arrow"></span>
+
+                <div class="product-card-wrapper">
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>7.5р</p>
+                            </div>
+                            <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>7.5р</p>
+                            </div>
+                            <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>7.5р</p>
+                            </div>
+                            <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="product-card">
+                        <div class="image-preview">
+                            <img src="./images/preview-product.png" alt="dinner">
+                        </div>
+                        <div class="product-info">
+                            <div class="description-product">
+                                <p>Морковный крем-суп с имбирем и печеным нутом</p>
+                            </div>
+                            <div class="cost-product">
+                                <p>170г</p>
+                                <p>7.5р</p>
+                            </div>
+                            <div class="payment-product">
+                                <div class="quantity-products">
+                                    <span class="minus-symbol">-</span>
+                                    <span class="v-model-quantity">1</span>
+                                    <span class="plus-symbol">+</span>
+                                </div>
+                                <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="transition-image-bottom"></div>
+    </section>
+
+    <section class="about-project">
+        <div class="about-project-container">
+            <div class="left-side-block">
+                <p class="header-text">О ПРОЕКТЕ</p>
+                <p class="about-project-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.</p>
+                <a class="button-primary">КАК ДОБРАТЬСЯ</a>
+            </div>
+            <!-- <div class="right-side-block"> -->
+                <img src="./images/about-project-img.png" alt="caffe image" class="right-side-image">
+            <!-- </div> -->
+        </div>
+    </section>
+
+    <section class="eco-products">
+        <div class="transition-image-top"></div>
+
+        <div class="eco-products-container">
+            <p class="title-text">ЭКО ПРОДУКТЫ ОТ «ШАНТИ ЛАВКА»</p>
+
+            
+            <div class="product-card-container">
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/nutella-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="new-product">Новинка</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/chocolade-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="hit-product">Хит</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/delished-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="hit-product">Хит</div>
+                            <div class="new-product">Новинка</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/delished-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="discount-product">Акция</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/nutella-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="new-product">Новинка</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/chocolade-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="hit-product">Хит</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/delished-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="hit-product">Хит</div>
+                            <div class="new-product">Новинка</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="image-preview">
+                        <img src="./images/delished-img.png" alt="dinner">
+                        <div class="state-product-container">
+                            <div class="discount-product">Акция</div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="description-product">
+                            <p>Масло кокосовое</p>
+                        </div>
+                        <div class="cost-product">
+                            <p>170г</p>
+                            <p>90р</p>
+                        </div>
+                        <div class="payment-product">
+                            <div class="quantity-products">
+                                <span class="minus-symbol">-</span>
+                                <span class="v-model-quantity">1</span>
+                                <span class="plus-symbol">+</span>
+                            </div>
+                            <a class="button-primary add-to-basket-butt">В КОРЗИНУ</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <a class="button-primary">ПОСМОТРЕТЬ ВСЕ</a>
+
+        <div class="transition-image-bottom"></div>
+    </section>
+
+    <section class="reviews-clients">
+        <div class="reviews-clients-container">
+            <p class="header-reviews">ОТЗЫВЫ</p>
+
+            <div class="reviews-block">
+                <div class="review-block-slider">
+                    <div class="review-block-wrapper">
+                        <div class="review-block">
+                            <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</p>
+                            <div>
+                                <p class="author-review">Алексей</p>
+                                <p class="rating">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/passive-rating-img.png">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="review-block">
+                            <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</p>
+                            <div>
+                                <p class="author-review">Евгения</p>
+                                <p class="rating">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/passive-rating-img.png">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="review-block">
+                            <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</p>
+                            <div>
+                                <p class="author-review">Дмитрий</p>
+                                <p class="rating">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/rating-img.png">
+                                    <img alt="rating image" src="./images/passive-rating-img.png">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <span class="custom-left-arrow-container">
+                    <span class="custom-left-arrow"></span>
+                </span>
+                <span class="custom-right-arrow-container">
+                    <span class="custom-right-arrow"></span>
+                </span>
+            </div>
+
+            <p class="buttons-block">
+                <a class="button-primary button-write-review">НАПИСАТЬ ОТЗЫВ</a>
+                <a class="button">ВСЕ ОТЗЫВЫ</a>
+            </p>
+        </div> 
+    </section>
+
+    <section class="footer">
+        <div class="footer-container">
+            <img class="brand-logo" src="./images/white-brand-logo.png" alt="brand logo">
+            <div class="footer-menu">
+                <a>Меню</a>
+                <a>Магазин</a>
+                <a>Подписка</a>
+                <a>Доставка</a>
+                <a>Партнерам</a>
+                <a>Контакты</a>
+            </div>
+
+            <div class="instagram-logo">
+                <img src="./images/white-instagram-logo-outside.png" class="instagram-logo-outside">
+                <img src="./images/white-instagram-logo-inside.png" class="instagram-logo-inside">
+                <span class="instagram-logo-dot"></span>
+            </div>
+
+            <div class="contacts-block">
+                <div class="left-side-block">
+                    <!-- <p>
+                        ООО "Метаркоф" УНП 193230335 Зарегистрирован Минским Горисполкомом
+                        Регистрационный номер в торговом реестре 353939 от 03.10.2016
+                        220025 Есенина 23-1-145
+                    </p> -->
+                    <p>
+                        ООО "Метаркоф" УНП 193230335 Зарегистрирован Минским Горисполкомом
+                    </p>
+                    <p>
+                        Регистрационный номер в торговом реестре 353939 от 03.10.2016
+                    </p>
+                    <p>
+                        220025 Есенина 23-1-145
+                    </p>
+                </div>
+                <div class="right-side-block">
+                    <p>
+                        Рейтинг: 4.2 (На основе 19 отзывов) Разработка и продвижение сайта Mediashark.by
+                    </p>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+
+    <div class="shadow-block"></div>
+
+    <script src="./scripts/modalsWindow.js"></script>
+    <script src="./scripts/burgerMenu.js"></script>
+    <script src="./scripts/reviews-block-slider.js"></script>
+    <script src="./scripts/productsCounter.js"></script>
+</body>
+</html>
