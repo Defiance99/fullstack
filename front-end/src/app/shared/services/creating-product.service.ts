@@ -12,16 +12,13 @@ export class CreateProductService {
 
     }
 
-    create(product: Product) {
-        return this.http.post('/api/product', product);
-    }
-
-    createTest(form: Product, images?: File[]) {
+    create(form: Product, images?: File[]) {
         const fd = new FormData();
+        console.log(form)
 
         if (images) {
             for (let image of images) {
-                fd.append('image', image, image.name);
+                fd.append('images', image, image.name);
             }
         }
         for (let bonus of form.bonuses) {
@@ -33,14 +30,17 @@ export class CreateProductService {
         for (let chartDay of form.chartDays) {
             fd.append('chartDays', chartDay);
         }
-        fd.append('cost', form.cost)
+        for (let field of form.customFields) {
+            console.log(form)
+            console.log(field)
+            fd.append('customFields', field)
+        }
+        fd.append('cost', String(form.cost))
         fd.append('name', form.name)
         fd.append('weight', String(form.weight))
         fd.append('currency', form.currency)
         fd.append('weightUnit', form.weightUnit)
-
-        
-        console.log(fd)
+        fd.append('description', form.description);
 
         return this.http.post('/api/product/upload', fd);
     }

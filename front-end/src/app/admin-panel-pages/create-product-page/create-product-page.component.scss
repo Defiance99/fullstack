@@ -26,3 +26,14 @@
     width: 100%;
     height: 100%;
 }
+
+.swiper-container {
+    width: 270px;
+    height: 270px;
+
+    img {
+        width: 270px;
+        height: 270px;
+        object-fit: cover;
+    }
+}

@@ -1,56 +1,59 @@
-<section class="left-side-admin-panel">
-    <div class="header-block-admin-panel">
-        <div class="header-content">
-            <img src="" alt="" class="img-user-admin-panel">
-            <p class="user-info-admin-panel"></p>
+<div style="display: flex;">
+<section class="left-side-admin-panel-container">
+    <div class="left-side-admin-panel">
+        <div class="header-block-admin-panel">
+            <div class="header-content">
+                <img src="" alt="" class="img-user-admin-panel">
+                <p class="user-info-admin-panel"></p>
+            </div>
         </div>
-    </div>
-    <div class="admin-menu-items-container">
-
-        <div class="search-admin-menu-items">
-            <!-- <mat-form-field class="amin-search">
-                <mat-label>Поиск</mat-label>
-            </mat-form-field> -->
+        <div class="admin-menu-items-container">
+    
+            <div class="search-admin-menu-items">
+                <!-- <mat-form-field class="amin-search">
+                    <mat-label>Поиск</mat-label>
+                </mat-form-field> -->
+            </div>
+    
+            <ul class="admin-menu-items-wrapper">
+                <li class="admin-menu-item" routerLink="/admin-panel" routerLinkActive="active-admin-page" [routerLinkActiveOptions]="{exact:true}">
+                    <div class="hor-centering-elems">
+                        <mat-icon aria-hidden="false" aria-label="home-icon">home</mat-icon>
+                        <span>Главная</span>
+                    </div>
+                </li>
+                <li class="admin-menu-item" routerLink="/admin-panel/catalog" routerLinkActive="active-admin-page">
+                    <div class="hor-centering-elems">
+                        <mat-icon aria-hidden="false" aria-label="apps-icon">apps</mat-icon>
+                        <span>Мой каталог</span>
+                    </div>
+                </li>
+                <li class="admin-menu-item" routerLink="/admin-panel/create-product" routerLinkActive="active-admin-page">
+                    <div class="hor-centering-elems">
+                        <mat-icon aria-hidden="false" aria-label="create-icon">add_box</mat-icon>
+                        <span>Создать товар</span>
+                    </div>
+                </li>
+                <li class="admin-menu-item" routerLink="/admin-panel/analytics" routerLinkActive="active-admin-page">
+                    <div class="hor-centering-elems">
+                        <mat-icon aria-hidden="false" aria-label="analytics-icon">timeline</mat-icon>
+                        <span>Аналитика</span>
+                    </div>
+                </li>
+                <li class="admin-menu-item" routerLink="/admin-panel/settings" routerLinkActive="active-admin-page">
+                    <div class="hor-centering-elems">
+                        <mat-icon aria-hidden="false" aria-label="settings-icon">settings</mat-icon>
+                        <span>Настройки</span>
+                    </div>
+                </li>
+                <li class="admin-menu-item" routerLink="/">
+                    <div class="hor-centering-elems">
+                        <mat-icon aria-hidden="false" aria-label="first-page-icon">first_page</mat-icon>
+                        <span>Выйти</span>
+                    </div>
+                </li>
+            </ul>
         </div>
-
-        <ul class="admin-menu-items-wrapper">
-            <li class="admin-menu-item" routerLink="/admin-panel" routerLinkActive="active-admin-page" [routerLinkActiveOptions]="{exact:true}">
-                <div class="hor-centering-elems">
-                    <mat-icon aria-hidden="false" aria-label="home-icon">home</mat-icon>
-                    <span>Главная</span>
-                </div>
-            </li>
-            <li class="admin-menu-item" routerLink="/admin-panel/catalog" routerLinkActive="active-admin-page">
-                <div class="hor-centering-elems">
-                    <mat-icon aria-hidden="false" aria-label="apps-icon">apps</mat-icon>
-                    <span>Мой каталог</span>
-                </div>
-            </li>
-            <li class="admin-menu-item" routerLink="/admin-panel/create-product" routerLinkActive="active-admin-page">
-                <div class="hor-centering-elems">
-                    <mat-icon aria-hidden="false" aria-label="create-icon">add_box</mat-icon>
-                    <span>Создать товар</span>
-                </div>
-            </li>
-            <li class="admin-menu-item" routerLink="/admin-panel/analytics" routerLinkActive="active-admin-page">
-                <div class="hor-centering-elems">
-                    <mat-icon aria-hidden="false" aria-label="analytics-icon">timeline</mat-icon>
-                    <span>Аналитика</span>
-                </div>
-            </li>
-            <li class="admin-menu-item" routerLink="/admin-panel/settings" routerLinkActive="active-admin-page">
-                <div class="hor-centering-elems">
-                    <mat-icon aria-hidden="false" aria-label="settings-icon">settings</mat-icon>
-                    <span>Настройки</span>
-                </div>
-            </li>
-            <li class="admin-menu-item" routerLink="/">
-                <div class="hor-centering-elems">
-                    <mat-icon aria-hidden="false" aria-label="first-page-icon">first_page</mat-icon>
-                    <span>Выйти</span>
-                </div>
-            </li>
-        </ul>
     </div>
 </section>
 
@@ -67,3 +70,4 @@
     <router-outlet></router-outlet>
 </section>
 
+</div>

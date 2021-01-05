@@ -17,7 +17,7 @@ import { CatalogPanelPageComponent } from './admin-panel-pages/catalog-panel-pag
 import { AnalyticsPanelPageComponent } from './admin-panel-pages/analytics-panel-page/analytics-panel-page.component';
 import { SettingsPanelPageComponent } from './admin-panel-pages/settings-panel-page/settings-panel-page.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModel,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SwiperModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

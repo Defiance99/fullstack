@@ -33,10 +33,10 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/styles/index.scss"
+              "src/assets/styles/index.scss",
             ],
             "scripts": [
-              
+
             ]
           },
           "configurations": {

@@ -1,7 +1,7 @@
 .admin-panel-content-container {
 
     .product-params-wrapper {
-        height: 60px;
+        min-height: 60px;
         margin-bottom: 50px;
         z-index: 1;
         background: #FFF;
@@ -18,11 +18,65 @@
 
     .create-product-wrapper {
         display: flex;
-        justify-content: center;
-        margin: 0 15px;
-        padding: 20px 15px;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 40px 15px;
         border-radius: 5px;
         background: #FFF;
         @extend %product-card;
+    }
+
+    .addinional-info-wrapper {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .description-product-form {
+        width: 100%;
+    }
+
+    .description {
+
+    }
+
+    .custom-fields-info {
+
+        h3 {
+            text-align: center;
+        }
+    }
+
+    
+    .custom-fields-info-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-field {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .manage-custom-fields {
+        display: flex;
+        justify-content: space-between;
+        max-width: 270px;
+        margin: 0 auto;
+    }
+
+    .custom-field-wrapper {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .count-custom-fields {
+        display: flex;
+        justify-content: flex-end;
     }
 }

@@ -26,6 +26,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     /* overflow-x: hidden; */
 
     &:focus {
@@ -43,14 +44,24 @@
 }
 
 .active-admin-page {
-    background:#007BFF;
+    position: relative;
+    background:#212F32;
 
     &:hover {
-        background: #007BFF !important;
+        background: #212F32 !important;
 
         .mat-icon, span {
             color: #FFF !important;
         }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        left: 0;
+        background-color: #17B4BD;
     }
 }
 
@@ -64,4 +75,8 @@
         margin-left: 15px;
         color: #FFF;
     }
+}
+
+.text-center {
+    text-align: center;
 }

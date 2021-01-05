@@ -7,4 +7,6 @@ export interface Product {
     weightUnit: string
     category: string[]
     chartDays: string[]
+    description: string
+    customFields: string[]
 }

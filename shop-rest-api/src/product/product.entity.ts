@@ -29,4 +29,13 @@ export class Product {
 
     @Column('simple-array')
     chartDays: string[]
+
+    @Column({type: 'text'})
+    description: string
+
+    @Column('simple-array')
+    customFields: object[]
+
+    @Column('simple-array')
+    images: string[]
 }
