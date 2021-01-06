@@ -32,13 +32,14 @@ export class ProductService {
         product.images = images;
         console.log(product) */
         //productDto['images'] = images;
-        console.log(productDto)
+        console.log(productDto);
 
         return await this.productRepository.insert(productDto)
     }
 
     async createTest(product: CreateProductDto) {
-        return await this.productRepository.insert(product)
+        console.log('i am Service');
+        /* return await this.productRepository.insert(product) */
     }
 
     async getAll(): Promise<Product[]> {

@@ -11,7 +11,8 @@ export class CustomValidationPipe implements PipeTransform {
         }
 
         value.cost = +value.cost;
-        if (!Number(value.cost)) {
+        value.weight = +value.weight;
+        if (!Number(value.cost) || !Number(value.weight)) {
             throw new BadRequestException('Validation Failed');
         }
 

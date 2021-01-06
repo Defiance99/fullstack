@@ -36,6 +36,6 @@ export class Product {
     @Column('simple-array')
     customFields: object[]
 
-    @Column('simple-array')
-    images: string[]
+    /* @Column('simple-array')
+    images: string[] */
 }

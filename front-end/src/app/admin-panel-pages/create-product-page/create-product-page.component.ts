@@ -62,8 +62,6 @@ export class CreateProductPageComponent implements OnInit, AfterViewChecked {
 
   onSubmit() {
     this.productForm.disable();
-    console.log(this.productForm)
-    console.log(this.productForm.value)
     this.productService.create(this.productForm.value, this.images).subscribe(
       () => {
         this.productForm.enable();
