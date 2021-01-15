@@ -8,6 +8,10 @@ import { ProductController } from './product/product.controller';
 import { ProductService } from './product/product.service';
 import { ProductModule } from './product/product.module';
 import { Product } from './product/product.entity';
+import { UsersModule } from './users/users.module';
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
+import { User } from './users/users.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,10 +22,12 @@ import { Product } from './product/product.entity';
       "password": "root",
       "database": "shopapi",
       "synchronize": true,
-      "entities": [Review, Product]
+      "entities": [Review, Product, User]
   }),
   ReviewModule,
-  ProductModule
+  ProductModule,
+  UsersModule,
+  AuthModule,
 ],
   controllers: [AppController],
   providers: [AppService],
