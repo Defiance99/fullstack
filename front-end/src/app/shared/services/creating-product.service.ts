@@ -33,18 +33,9 @@ export class CreateProductService {
         fd.append('customFields', JSON.stringify(form.customFields));
 
 
-        console.log(fd.get('name'));
-        console.log(fd.get('cost'));
-        console.log(fd.get('weight'));
-        console.log(fd.get('currency'));
-        console.log(fd.get('description'));
-        console.log(fd.get('weightUnit'));
-        console.log(fd.get('customFields'));
-        console.log(fd.get('chartDays'));
-        console.log(fd.get('category'));
-        console.log(fd.get('bonuses'));
+        console.log(fd.get('images'));
 
-        return this.http.post('/api/product', fd);
+        return this.http.post('/api/product/upload', fd);
     }
 
 }

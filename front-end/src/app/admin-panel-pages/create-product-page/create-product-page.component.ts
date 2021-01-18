@@ -30,19 +30,19 @@ export class CreateProductPageComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
-      name: new FormControl(""),
-      cost: new FormControl(""),
-      weight: new FormControl(""),
+      name: new FormControl("", [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),
+      cost: new FormControl("", [Validators.required, Validators.min(1), Validators.pattern('[0-9]+')]),
+      weight: new FormControl("", [Validators.required, Validators.min(1), Validators.pattern('[0-9]+')]),
       bonuses: new FormControl(""),
-      currency: new FormControl(""),
-      weightUnit: new FormControl(""),
-      category: new FormControl(""),
-      chartDays: new FormControl(""),
-      description: new FormControl(""),
+      currency: new FormControl("", [Validators.required]),
+      weightUnit: new FormControl("", [Validators.required]),
+      category: new FormControl("", [Validators.required]),
+      chartDays: new FormControl("", [Validators.required]),
+      description: new FormControl("", [Validators.maxLength(100)]),
       customFields: new FormArray([
         new FormGroup({
-          nameCustomField: new FormControl(''),
-          valueCustomField: new FormControl('')
+          nameCustomField: new FormControl(""),
+          valueCustomField: new FormControl("")
         }),
       ])
     });
@@ -101,8 +101,8 @@ export class CreateProductPageComponent implements OnInit, AfterViewChecked {
   addCustomField() {
     if (this.formData.controls.length < 5) {
       (<FormArray>this.productForm.controls['customFields']).push(new FormGroup({
-        nameCustomField: new FormControl(''),
-        valueCustomField: new FormControl('')
+        nameCustomField: new FormControl(""),
+        valueCustomField: new FormControl("")
       }));
     }
   }

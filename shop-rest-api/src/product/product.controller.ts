@@ -3,7 +3,6 @@ import { diskStorage } from 'multer';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductService } from './product.service';
-import { validate } from 'class-validator';
 import { CustomValidationPipe } from 'src/common/validation.pipe';
 
 @Controller('api/product')
@@ -29,9 +28,8 @@ export class ProductController {
             }
         })
     }))
-    async uploadedFile(@Body() createProductDto: CreateProductDto, @UploadedFiles() images) {
-        console.log(createProductDto)
-        this.productService.create(images, createProductDto)
+    async uploadedFile(@Body(new CustomValidationPipe()) createProductDto: CreateProductDto, @UploadedFiles() images) {
+        await this.productService.create(images, createProductDto);
     }
 
     @Post()
@@ -45,6 +43,7 @@ export class ProductController {
                 console.log('i havent erorrs!', errors);
             }
         })) */
+
         this.productService.createTest(product)
         console.log(product);
     }

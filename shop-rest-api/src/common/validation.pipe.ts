@@ -12,6 +12,11 @@ export class CustomValidationPipe implements PipeTransform {
 
         value.cost = +value.cost;
         value.weight = +value.weight;
+        value.bonuses = JSON.parse(value.bonuses);
+        value.category = JSON.parse(value.category);
+        value.chartDays = JSON.parse(value.chartDays);
+        value.customFields = JSON.parse(value.customFields);
+        
         if (!Number(value.cost) || !Number(value.weight)) {
             throw new BadRequestException('Validation Failed');
         }
@@ -29,34 +34,4 @@ export class CustomValidationPipe implements PipeTransform {
         const types: Function[] = [String, Boolean, Number, Array, Object];
         return !types.includes(metatype);
     }
-
-
-    /* async transform(value: any, metaData: ArgumentMetadata) {
-        const { metatype } = metaData;
-        if (this.isEmpty(value)) {
-            throw new HttpException('Validation failed: no payload provided', HttpStatus.BAD_REQUEST);
-        }
-
-        const object = plainToClass(metatype, value);
-    
-        const errors = await validate(object);
-
-        if (errors.length > 0) {
-            throw new HttpException(`Validation failed: ${this.formatErrors(errors)}`, HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    private isEmpty(value: any) {
-        if (Object.keys(value).length < 1) {
-            return true
-        }
-        return false
-    }
-    private formatErrors(errors: any[]) {
-        return errors.map( error => {
-            for (let key in error.constraints) {
-                return error.constraints[key]
-            }
-        }).join(', ');
-    }  */
 }
