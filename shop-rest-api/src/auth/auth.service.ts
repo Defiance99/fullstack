@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from 'src/users/users.service';
 import { SignInDto } from './dto/sign-in.dto';
@@ -16,7 +16,7 @@ export class AuthService {
     async validateUser(dataSignIn: SignInDto) {
         const user = await this.userService.findByLogin(dataSignIn.login);
         const resultOfCheckingPasswords  = await bcrypt.compareSync(dataSignIn.password, user.password);
-        
+
         if (user && resultOfCheckingPasswords) {
             return user;
         }else {
@@ -34,7 +34,7 @@ export class AuthService {
 
             this.userService.create(dataUser);
         }else {
-            return null;
+            throw new HttpException('This login already exist', HttpStatus.CONFLICT)
         }
     }
 
