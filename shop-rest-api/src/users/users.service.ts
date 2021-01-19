@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-users.dto';
@@ -14,8 +14,13 @@ export class UsersService {
         private userRepository: Repository<User>
     ) {}
 
-    async findOne(login: string): Promise<User | undefined> {
-        return await this.userRepository.findOne({'login': login});
+    async findByLogin(login: string): Promise<User | undefined> {
+        const user = await this.userRepository.findOne({login});
+        if (user) {
+            return user;
+        }/* else {
+            throw new HttpException('User with the login does not exist', HttpStatus.NOT_FOUND);
+        } */
     }
 
     async create(user: CreateUserDto) {
@@ -24,6 +29,10 @@ export class UsersService {
 
     async getAll(): Promise<User[]> {
         return await this.userRepository.find();
+    }
+
+    async removeById(id: string) {
+        return await this.userRepository.delete(id);
     }
 
 }

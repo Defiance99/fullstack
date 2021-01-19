@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { bcrypt } from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { UsersService } from 'src/users/users.service';
 import { SignInDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
@@ -14,9 +14,9 @@ export class AuthService {
     ) {}
 
     async validateUser(dataSignIn: SignInDto) {
-        const user = await this.userService.findOne(dataSignIn.login);
+        const user = await this.userService.findByLogin(dataSignIn.login);
         const resultOfCheckingPasswords  = await bcrypt.compareSync(dataSignIn.password, user.password);
-
+        
         if (user && resultOfCheckingPasswords) {
             return user;
         }else {
@@ -25,17 +25,17 @@ export class AuthService {
     }
 
     async registerUser(dataUser: SignUpDto) {
-        const user = await this.userService.findOne(dataUser.login);
+        const user = await this.userService.findByLogin(dataUser.login);
 
-        if (user) {
-            bcrypt.hash(user.password, this.saltRounds, function(err, hash) {
-                user.password = hash;
-                this.userService.create(user);
-            });
+        if (!user) {
+            const salt = await bcrypt.genSaltSync(this.saltRounds);
+            const hash = await bcrypt.hashSync(dataUser.password, salt);
+            dataUser.password = hash;
+
+            this.userService.create(dataUser);
         }else {
             return null;
         }
-        
     }
 
 
