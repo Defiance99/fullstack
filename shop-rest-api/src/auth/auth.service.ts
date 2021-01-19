@@ -15,12 +15,15 @@ export class AuthService {
 
     async validateUser(dataSignIn: SignInDto) {
         const user = await this.userService.findByLogin(dataSignIn.login);
+        if (!user) {
+            throw new HttpException('Login or password is wrong', HttpStatus.UNAUTHORIZED);
+        }
         const resultOfCheckingPasswords  = await bcrypt.compareSync(dataSignIn.password, user.password);
 
         if (user && resultOfCheckingPasswords) {
             return user;
         }else {
-            return null;
+            throw new HttpException('Login or password is wrong', HttpStatus.UNAUTHORIZED);
         }
     }
 

@@ -10,7 +10,7 @@ export class CustomValidationPipe implements PipeTransform {
             return value;
         }
 
-        value.cost = +value.cost;
+        /* value.cost = +value.cost;
         value.weight = +value.weight;
         value.bonuses = JSON.parse(value.bonuses);
         value.category = JSON.parse(value.category);
@@ -19,7 +19,7 @@ export class CustomValidationPipe implements PipeTransform {
         
         if (!Number(value.cost) || !Number(value.weight)) {
             throw new BadRequestException('Validation Failed');
-        }
+        } */
 
         const object = plainToClass(metatype, value);
         const errors = await validate(object);

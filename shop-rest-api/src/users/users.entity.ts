@@ -7,12 +7,12 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({type: 'tinytext'})
     userName: string
 
-    @Column({ unique: true })
+    @Column({ unique: true})
     login: string
 
-    @Column()
+    @Column({type: 'tinytext'})
     password: string
 }
