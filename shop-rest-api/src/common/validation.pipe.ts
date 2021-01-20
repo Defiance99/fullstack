@@ -6,6 +6,7 @@ import { validate } from 'class-validator';
 export class CustomValidationPipe implements PipeTransform {
     async transform(value: any, {metatype}: ArgumentMetadata) {
         console.log(metatype, 'validation', value);
+        // metatype - is a dto file
         if (!metatype || !this.toValidate(metatype)) {
             return value;
         }
