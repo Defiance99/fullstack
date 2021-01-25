@@ -6,11 +6,12 @@ import { validate } from 'class-validator';
 export class CustomValidationPipe implements PipeTransform {
     async transform(value: any, {metatype}: ArgumentMetadata) {
         console.log(metatype, 'validation', value);
+        // metatype - is a dto file
         if (!metatype || !this.toValidate(metatype)) {
             return value;
         }
 
-        value.cost = +value.cost;
+        /* value.cost = +value.cost;
         value.weight = +value.weight;
         value.bonuses = JSON.parse(value.bonuses);
         value.category = JSON.parse(value.category);
@@ -19,7 +20,7 @@ export class CustomValidationPipe implements PipeTransform {
         
         if (!Number(value.cost) || !Number(value.weight)) {
             throw new BadRequestException('Validation Failed');
-        }
+        } */
 
         const object = plainToClass(metatype, value);
         const errors = await validate(object);
