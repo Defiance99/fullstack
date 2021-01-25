@@ -58,14 +58,21 @@
 </section>
 
 <section class="right-side-admin-panel">
-    <div class="title-admin-page">
-        <h1>{{titlePage}}</h1>
-    </div>
-    <div class="breadcrumb-nav">
-        <div class="breadcrumb-nav-container">
-            
+    <div class="header-admin-page">
+        <div class="header-admin-page__container">
+            <h1 class="header-admin-page_title">{{titlePage}}</h1>
+
+            <div class="breadcrumb-nav">
+                <div class="breadcrumb-nav__content">
+                    <p class="breadcrumb-nav__element">Bread / </p>
+                    <p class="breadcrumb-nav__element"> Crumb</p>
+                </div>
+            </div>
         </div>
+
+        
     </div>
+    
 
     <router-outlet></router-outlet>
 </section>

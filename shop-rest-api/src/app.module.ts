@@ -12,6 +12,8 @@ import { UsersModule } from './users/users.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { User } from './users/users.entity';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './config/configuration';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -24,10 +26,12 @@ import { User } from './users/users.entity';
       "synchronize": true,
       "entities": [Review, Product, User]
   }),
+  ConfigModule.forRoot(),
   ReviewModule,
   ProductModule,
   UsersModule,
   AuthModule,
+
 ],
   controllers: [AppController],
   providers: [AppService],

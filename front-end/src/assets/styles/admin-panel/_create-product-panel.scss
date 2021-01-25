@@ -1,82 +1,85 @@
 .admin-panel-content-container {
+    height: 100%;
+    width: 100%;
+}
 
-    .product-params-wrapper {
-        min-height: 60px;
-        margin-bottom: 50px;
-        z-index: 1;
-        background: #FFF;
+.product-form {
 
+}
 
-        .product-params {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%;
-            padding: 0 15px;
-        }
+.product-form__header {
+
+}
+
+.product-form__title {
+
+}
+
+.body-block {
+
+}
+
+.left-side-block {
+
+}
+
+.right-side-block {
+
+}
+
+.right-side-block__wrap {
+
+}
+
+.right-side-block__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+
+    .mat-form-field {
+        width: 250px;
     }
 
-    .create-product-wrapper {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        max-width: 600px;
-        margin: 30px auto;
-        padding: 40px 15px;
+    .mat-form-field-wrapper {
+        border-bottom: 3px #dad4d4 double;
+    }
+
+    .mat-form-field-outline {
+        background-color: #FFF;
         border-radius: 5px;
-        background: #FFF;
-        @extend %product-card;
     }
+}
 
-    .addinional-info-wrapper {
-        width: 100%;
-        max-width: 400px;
-    }
+.right-side-block__element {
+    margin: 10px 15px;
+}
 
-    .description-product-form {
-        width: 100%;
-    }
+.mat-form-field-wrapper {
+    border-bottom: 1px solid ;
+}
 
-    .description {
+.name-product {
 
-    }
+}
 
-    .custom-fields-info {
+.name-product__input {
 
-        h3 {
-            text-align: center;
-        }
-    }
+}
 
-    
-    .custom-fields-info-container {
-        display: flex;
-        flex-direction: column;
-    }
+.cost-product {
 
-    .custom-field {
-        display: flex;
-        justify-content: space-between;
-    }
+}
 
-    .manage-custom-fields {
-        display: flex;
-        justify-content: space-between;
-        max-width: 270px;
-        margin: 0 auto;
-    }
+.cost-product__input {
 
-    .custom-field-wrapper {
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-        max-width: 420px;
-        margin: 0 auto;
-    }
+}
 
-    .count-custom-fields {
-        display: flex;
-        justify-content: flex-end;
-    }
+.weight-product {
+
+}
+
+.weight-product__input {
+
 }

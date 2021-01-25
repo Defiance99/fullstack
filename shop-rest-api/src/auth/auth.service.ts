@@ -1,4 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from 'src/users/users.service';
 import { SignInDto } from './dto/sign-in.dto';
@@ -10,7 +11,8 @@ export class AuthService {
     private saltRounds = 10;
     
     constructor (
-        private userService: UsersService
+        private userService: UsersService,
+        private jwtService: JwtService
     ) {}
 
     async validateUser(dataSignIn: SignInDto) {
@@ -38,5 +40,13 @@ export class AuthService {
         }
     }
 
+    async login(dataUser: SignInDto) {
+        const payload = {
+            username: dataUser.login,
+        }
+        return {
+            access_token: this.jwtService.sign(payload)
+        }
+    }
 
 }

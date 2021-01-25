@@ -4,6 +4,12 @@ $title-passive-color: #F4A17B;
 $main-text-color: #383838;
 $padding-low-screen: 15px;
 
+
+:root {
+    --black: #2A232B;
+    --light-gray: #F4F6F9;
+}
+
 /* Shared classes */
 .showBurgerMenu {
     width: 235px !important;

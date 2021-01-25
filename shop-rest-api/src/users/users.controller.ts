@@ -28,5 +28,4 @@ export class UsersController {
     async removeById(@Param('id') id: string) {
         return this.userService.removeById(id);
     }
-
 }

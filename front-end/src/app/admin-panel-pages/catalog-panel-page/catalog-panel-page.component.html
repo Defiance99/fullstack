@@ -1,1 +1,199 @@
-<p>catalog-panel-page works!</p>
+<!-- <form class="admin-panel-content-container" [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <div class="create-product-wrapper">
+        <div class="product-params-wrapper">
+            <div class="product-params">
+                <div class="templates-products-filter">
+
+                </div>
+                <div class="bonus-item">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Информация о товаре:</mat-label>
+                        <mat-select multiple formControlName="bonuses">
+                            <mat-option value="Хит" (click)="showBonus('hit')">Хит</mat-option>
+                            <mat-option value="Скидка" (click)="showBonus('discount')">Скидка</mat-option>
+                            <mat-option value="Новинка" (click)="showBonus('new')">Новинка</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="currency-product">
+                    <mat-form-field>
+                        <mat-label>Валюта:</mat-label>
+                        <mat-select formControlName="currency">
+                            <mat-option value="Доллар">Доллар</mat-option>
+                            <mat-option value="Евро">Евро</mat-option>
+                            <mat-option value="Рубль">Рубль</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="weight-product">
+                    <mat-form-field>
+                        <mat-label>Единица веса:</mat-label>
+                        <mat-select formControlName="weightUnit">
+                            <mat-option value="Миллиграмм">Миллиграмм</mat-option>
+                            <mat-option value="Грамм">Грамм</mat-option>
+                            <mat-option value="Килограмм">Килограмм</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="category-product">
+                    <mat-form-field>
+                        <mat-label>Категория продутка</mat-label>
+                        <mat-select multiple formControlName="category">
+                            <mat-option value="Завтрак">Завтрак</mat-option>
+                            <mat-option value="Обед">Обед</mat-option>
+                            <mat-option value="Десерт">Десерт</mat-option>
+                            <mat-option value="Хлеб и выпечка">Хлеб и выпечка</mat-option>
+                            <mat-option value="Соусы и намазки">Соусы и намазки</mat-option>
+                            <mat-option value="Напитки">Напитки</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="chart-days-product">
+                    <mat-form-field>
+                        <mat-label>График дней</mat-label>
+                        <mat-select multiple formControlName="chartDays">
+                            <mat-option value="Понедельник">Понедельник</mat-option>
+                            <mat-option value="Вторник">Вторник</mat-option>
+                            <mat-option value="Среда">Среда</mat-option>
+                            <mat-option value="Четверг">Четверг</mat-option>
+                            <mat-option value="Пятница">Пятница</mat-option>
+                            <mat-option value="Суббота">Суббота</mat-option>
+                            <mat-option value="Воскресенье">Воскресенье</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="download-img">
+                    <a  
+                        mat-stroked-button 
+                        color="primary"
+                        (click)="triggerClick()"
+                        [disabled]="productForm.disabled"
+                    >
+                        Загрузить изображения
+                    </a>
+                    <input 
+                        type="file" 
+                        #inputFile class="dn" 
+                        (change)="onFileUpload($event)" 
+                        multiple
+                    >
+                </div>
+                <div class="create-button-wrapper">
+                    <button 
+                        type="submit" 
+                        mat-raised-button 
+                        color="primary"
+                    >
+                        Создать
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="image-preview">
+                <div>
+                    <swiper 
+                        [slidesPerView]="1"
+                        [spaceBetween]="10"
+                        (swiper)="onSwiper($event)"
+                        (slideChange)="onSlideChange()"
+                        [navigation]="false"
+                        [pagination]="false"
+                    >
+                        <ng-template swiperSlide>
+                            <div><img src="/assets/images/preview-product.png"></div>    
+                        </ng-template>
+                        <ng-container *ngFor="let image of imagesPreview">
+                            <ng-template swiperSlide>
+                                <div><img src={{image}} alt="image"></div>
+                            </ng-template>
+                        </ng-container>
+                    </swiper>
+                </div>
+                
+                <div class="state-product-container">
+                    <div class="hit-product" *ngIf="isHit">Хит</div>
+                    <div class="discount-product" *ngIf="isDiscount">Акция</div>
+                    <div class="new-product" *ngIf="isNew">Новинка</div>
+                </div>
+            </div>
+            
+            
+            <div class="product-info">
+                <div class="description-product">
+                    <p>
+                        <mat-icon aria-hidden="false" aria-label="create-icon">create</mat-icon>
+                        <mat-form-field class="name-product-form">
+                            <mat-label>Название продукта</mat-label>
+                            <input matInput type="text" maxlength="30" formControlName="name">
+                          </mat-form-field>
+                    </p>
+                </div>
+                <div class="cost-product">
+                    <p>
+                        <mat-icon aria-hidden="false" aria-label="create-icon">monetization_on</mat-icon>
+                        <mat-form-field class="cost-product-form">
+                            <mat-label>Цена:</mat-label>
+                            <input matInput type="text" formControlName="cost">
+                          </mat-form-field> 
+                    </p>
+                    <p>
+                        <mat-icon aria-hidden="false" aria-label="create-icon">storefront</mat-icon>
+                        <mat-form-field class="weight-product-form">
+                            <mat-label>Вес:</mat-label>
+                            <input matInput type="text" formControlName="weight">
+                        </mat-form-field>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="create-product-wrapper">
+        <div class="addinional-info-wrapper">
+            
+            <div class="custom-fields-info">
+                <h2 class="text-center">Дополнительная информация:</h2>
+                <div class="description-info">
+                    <h3>Описание товара:</h3>
+                    <div class="description">
+                        <mat-form-field appearance="outline" class="description-product-form">
+                            <mat-label>Ваше описание</mat-label>
+                            <textarea matInput formControlName="description"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="custom-fields-info-container">
+                    <h3>Пользовательские поля {{this.formData.controls.length}} / 5 :</h3>
+                    <div 
+                        class="custom-field" 
+                        formArrayName="customFields" 
+                        *ngFor="let field of formData['controls']; let i = index;"
+                    >
+                        <div [formGroupName]='i' class="custom-field-wrapper">
+                            <div class="name-custom-field">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Название поля:</mat-label>
+                                    <input matInput formControlName="nameCustomField">
+                                    <mat-icon matSuffix>toc</mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="value-custom-field">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Значение поля:</mat-label>
+                                    <input matInput formControlName="valueCustomField">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="manage-custom-fields">
+                    <a mat-raised-button color="primary" (click)="addCustomField()">Добавить поле</a>
+                    <a mat-raised-button color="primary" (click)="removeCustomField()">Удалить поле</a>    
+                </div>
+            </div>
+        </div>
+    </div>
+</form> -->

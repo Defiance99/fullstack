@@ -66,19 +66,46 @@
     width: 100%;
     background-color :#F4F6F9;
     
-    .title-admin-page {
+    .header-admin-page {
         display: flex;
         align-items: center;
-        height: 50px;
+        height: 70px;
         padding: 20px;
         background: #FFF;
-        /* background: #F4A17B;
 
-        h1 {
-            padding: 0 20px;
-            font-size: 56px;
-            color: #FFF;
-        } */
+        .header-admin-page_title {
+            margin: 0;
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-left: 20px;
+
+            .breadcrumb-nav__content {
+                display: flex;
+                align-items: center;
+
+                .breadcrumb-nav__element {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    @media (max-width: 800px) {
+        .right-side-admin-panel {
+            left: 40px;
+            width: calc(100% - 40px);
+    
+            .create-product-wrapper {
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+        }
+    }
+    @media (max-width: 540px) {
+        
     }
 }
 
