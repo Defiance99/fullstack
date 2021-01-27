@@ -13,7 +13,11 @@ import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { User } from './users/users.entity';
 import { ConfigModule } from '@nestjs/config';
+<<<<<<< HEAD
 import configuration from './config/configuration';
+=======
+import { JwtModule } from '@nestjs/jwt';
+>>>>>>> backend-auth
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -27,6 +31,13 @@ import configuration from './config/configuration';
       "entities": [Review, Product, User]
   }),
   ConfigModule.forRoot(),
+<<<<<<< HEAD
+=======
+  /* JwtModule.register({
+    secret: process.env.JWT_SECRET_KEY,
+    signOptions: { expiresIn: '60s'}
+  }), */
+>>>>>>> backend-auth
   ReviewModule,
   ProductModule,
   UsersModule,

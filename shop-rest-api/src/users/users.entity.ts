@@ -14,5 +14,5 @@ export class User {
     login: string
 
     @Column({type: 'tinytext'})
-    password: string
+    password?: string
 }

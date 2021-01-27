@@ -23,7 +23,8 @@ export class AuthService {
         const resultOfCheckingPasswords  = await bcrypt.compareSync(dataSignIn.password, user.password);
 
         if (user && resultOfCheckingPasswords) {
-            return user;
+            const {password, ...result} = user;
+            return result;
         }else {
             throw new HttpException('Login or password is wrong', HttpStatus.UNAUTHORIZED);
         }
@@ -43,6 +44,7 @@ export class AuthService {
         }
     }
 
+<<<<<<< HEAD
     async login(dataUser: SignInDto) {
         const payload = {
             username: dataUser.login,
@@ -52,4 +54,21 @@ export class AuthService {
         }
     }
 
+=======
+    async login(user: SignInDto) {
+        /* const payload = { userName: user.login, sub: user}; */
+        console.log(user);
+        /* return {
+            access_token: this.jwtService.sign(payload);
+        } */
+    }
+>>>>>>> backend-auth
 }
+
+// Алгоритм аутентификации
+//  1. Регистрация - registerUser, хэширование парооля
+//  2. Первый вход - гвард на проверку логина и пароля (validateUser), пароль хэшируется и проверяется с хэшированным паролем в бд
+//  2.1 Вход на защищенные маршруты, где требуется jwt токен 
+//  3. При успешном первом входе устанавливается в req токен 
+//  4. Последующие входы проверяется подлинность токена 
+//

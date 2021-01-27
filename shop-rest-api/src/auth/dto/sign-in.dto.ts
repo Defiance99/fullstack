@@ -7,7 +7,6 @@ export class SignInDto {
     @Length(4,20)
     login: string
 
-    @IsNotEmpty()
     @IsString()
     @Length(5,15)
     password: string
