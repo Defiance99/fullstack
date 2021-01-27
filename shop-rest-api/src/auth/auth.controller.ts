@@ -3,7 +3,7 @@ import { CustomValidationPipe } from 'src/common/validation.pipe';
 import { AuthService } from './auth.service';
 import { SignInDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
-import { LocalAuthGuard } from './local-auth.guard';
+import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @Controller('api/auth')
 export class AuthController {
@@ -20,8 +20,7 @@ export class AuthController {
     @Post('signIn')
     @HttpCode(HttpStatus.OK)
     /* async signIn(@Body(new CustomValidationPipe()) dataSignIn: SignInDto) { */
-    async signIn(@Request() req) {
-        console.log(req);
+        async login(@Request() req) {
         return this.authService.login(req.user);
     }
 

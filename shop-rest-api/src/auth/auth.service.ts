@@ -7,15 +7,13 @@ import { SignUpDto } from './dto/sign-up.dto';
 
 @Injectable()
 export class AuthService {
-
-    private saltRounds = 10;
     
     constructor (
         private userService: UsersService,
         private jwtService: JwtService
     ) {}
 
-    async validateUser(dataSignIn: SignInDto) {
+    async validateUser(dataSignIn: SignInDto): Promise<any> {
         const user = await this.userService.findByLogin(dataSignIn.login);
         if (!user) {
             throw new HttpException('Login or password is wrong', HttpStatus.UNAUTHORIZED);
@@ -34,7 +32,7 @@ export class AuthService {
         const user = await this.userService.findByLogin(dataUser.login);
 
         if (!user) {
-            const salt = await bcrypt.genSaltSync(this.saltRounds);
+            const salt = await bcrypt.genSaltSync(+process.env.SALT_ROUNDS);
             const hash = await bcrypt.hashSync(dataUser.password, salt);
             dataUser.password = hash;
 
@@ -44,25 +42,15 @@ export class AuthService {
         }
     }
 
-<<<<<<< HEAD
     async login(dataUser: SignInDto) {
-        const payload = {
-            username: dataUser.login,
-        }
-        return {
-            access_token: this.jwtService.sign(payload)
+        const user = await this.userService.findByLogin(dataUser.login);
+        if (user) {
+            const payload = {userName: user.userName, id: user.id}
+            return {
+                access_token: this.jwtService.sign(payload)
+            }
         }
     }
-
-=======
-    async login(user: SignInDto) {
-        /* const payload = { userName: user.login, sub: user}; */
-        console.log(user);
-        /* return {
-            access_token: this.jwtService.sign(payload);
-        } */
-    }
->>>>>>> backend-auth
 }
 
 // Алгоритм аутентификации
