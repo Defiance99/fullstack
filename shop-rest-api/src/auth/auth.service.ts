@@ -1,4 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from 'src/users/users.service';
 import { SignInDto } from './dto/sign-in.dto';
@@ -21,7 +22,8 @@ export class AuthService {
         const resultOfCheckingPasswords  = await bcrypt.compareSync(dataSignIn.password, user.password);
 
         if (user && resultOfCheckingPasswords) {
-            return user;
+            const {password, ...result} = user;
+            return result;
         }else {
             throw new HttpException('Login or password is wrong', HttpStatus.UNAUTHORIZED);
         }
@@ -41,5 +43,19 @@ export class AuthService {
         }
     }
 
-
+    async login(user: SignInDto) {
+        /* const payload = { userName: user.login, sub: user}; */
+        console.log(user);
+        /* return {
+            access_token: this.jwtService.sign(payload);
+        } */
+    }
 }
+
+// Алгоритм аутентификации
+//  1. Регистрация - registerUser, хэширование парооля
+//  2. Первый вход - гвард на проверку логина и пароля (validateUser), пароль хэшируется и проверяется с хэшированным паролем в бд
+//  2.1 Вход на защищенные маршруты, где требуется jwt токен 
+//  3. При успешном первом входе устанавливается в req токен 
+//  4. Последующие входы проверяется подлинность токена 
+//

@@ -12,6 +12,8 @@ import { UsersModule } from './users/users.module';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { User } from './users/users.entity';
+import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -24,6 +26,11 @@ import { User } from './users/users.entity';
       "synchronize": true,
       "entities": [Review, Product, User]
   }),
+  ConfigModule.forRoot(),
+  /* JwtModule.register({
+    secret: process.env.JWT_SECRET_KEY,
+    signOptions: { expiresIn: '60s'}
+  }), */
   ReviewModule,
   ProductModule,
   UsersModule,
