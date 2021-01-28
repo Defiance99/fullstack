@@ -1,7 +1,8 @@
-import { Body, Controller, HttpCode, Request, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpCode, Request, HttpStatus, Post, UseGuards, Get } from '@nestjs/common';
 import { CustomValidationPipe } from 'src/common/validation.pipe';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/sign-up.dto';
+import { GoogleAuthGuard } from './guards/google-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @Controller('api/auth')
@@ -20,6 +21,16 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     async login(@Request() req) {
         return this.authService.login(req.user);
+    }
+
+    @UseGuards(GoogleAuthGuard)
+    @Get('google')
+    async googleAuth(@Request() req) {}  
+
+    @UseGuards(GoogleAuthGuard)
+    @Get('redirect')
+    async googleAuthRedirect(@Request() req) {
+        this.authService.googleLogin(req);
     }
 
 }

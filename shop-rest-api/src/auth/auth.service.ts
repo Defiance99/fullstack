@@ -51,6 +51,17 @@ export class AuthService {
             }
         }
     }
+
+    async googleLogin(req: any) {
+        console.log(req, 'google is worked');
+        if (!req.user) {
+            return 'No user from login'
+        }
+        return {
+            message: 'User information from google',
+            user: req.user
+        }
+    }
 }
 
 // Алгоритм аутентификации
@@ -60,3 +71,8 @@ export class AuthService {
 //  3. При успешном первом входе устанавливается в req токен 
 //  4. Последующие входы проверяется подлинность токена 
 //  exp: Была проблема в неточности соблдения стратегии, решилась добавлением поля usernameField
+//
+// Способы конфигурации: 
+// 1. импорт config из dotenv и его вызов config()
+// 2. ServiceConfig в конструкторе, затем configService.get<string>('SOME_FIELD'), 
+//
