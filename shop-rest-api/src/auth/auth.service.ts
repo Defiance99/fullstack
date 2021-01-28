@@ -13,12 +13,12 @@ export class AuthService {
         private jwtService: JwtService
     ) {}
 
-    async validateUser(dataSignIn: SignInDto): Promise<any> {
-        const user = await this.userService.findByLogin(dataSignIn.login);
+    async validateUser(login: string, password: string): Promise<any> {
+        const user = await this.userService.findByLogin(login);
         if (!user) {
             throw new HttpException('Login or password is wrong', HttpStatus.UNAUTHORIZED);
         }
-        const resultOfCheckingPasswords  = await bcrypt.compareSync(dataSignIn.password, user.password);
+        const resultOfCheckingPasswords  = await bcrypt.compareSync(password, user.password);
 
         if (user && resultOfCheckingPasswords) {
             const {password, ...result} = user;
@@ -59,4 +59,4 @@ export class AuthService {
 //  2.1 Вход на защищенные маршруты, где требуется jwt токен 
 //  3. При успешном первом входе устанавливается в req токен 
 //  4. Последующие входы проверяется подлинность токена 
-//
+//  exp: Была проблема в неточности соблдения стратегии, решилась добавлением поля usernameField

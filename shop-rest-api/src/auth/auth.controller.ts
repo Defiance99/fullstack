@@ -1,7 +1,6 @@
 import { Body, Controller, HttpCode, Request, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { CustomValidationPipe } from 'src/common/validation.pipe';
 import { AuthService } from './auth.service';
-import { SignInDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 
@@ -19,7 +18,6 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post('signIn')
     @HttpCode(HttpStatus.OK)
-    /* async signIn(@Body(new CustomValidationPipe()) dataSignIn: SignInDto) { */
         async login(@Request() req) {
         return this.authService.login(req.user);
     }
