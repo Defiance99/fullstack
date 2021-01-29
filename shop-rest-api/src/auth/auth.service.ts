@@ -53,8 +53,7 @@ export class AuthService {
     }
 
     async googleLogin(req: any) {
-        console.log(req, 'google is worked');
-        if (!req.user) {
+        if (req.user) {
             return 'No user from login'
         }
         return {

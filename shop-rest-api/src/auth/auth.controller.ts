@@ -16,21 +16,23 @@ export class AuthController {
         return this.authService.registerUser(dataSignUp);
     }
     
-    @UseGuards(LocalAuthGuard)
     @Post('signIn')
+    @UseGuards(LocalAuthGuard)
     @HttpCode(HttpStatus.OK)
     async login(@Request() req) {
         return this.authService.login(req.user);
     }
 
-    @UseGuards(GoogleAuthGuard)
     @Get('google')
-    async googleAuth(@Request() req) {}  
-
     @UseGuards(GoogleAuthGuard)
-    @Get('redirect')
-    async googleAuthRedirect(@Request() req) {
-        this.authService.googleLogin(req);
+    googleLogin() {
+
+    }  
+
+    @Get('google/redirect')
+    @UseGuards(GoogleAuthGuard)
+    googleLoginCallback(@Request() req) {
+        return this.authService.googleLogin(req.user);
     }
 
 }
