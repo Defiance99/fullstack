@@ -3,12 +3,22 @@ import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
 @Injectable() 
-export class CustomValidationPipe implements PipeTransform {
+export class ProductValidationPipe implements PipeTransform {
     async transform(value: any, {metatype}: ArgumentMetadata) {
-        console.log(metatype, 'validation', value);
         // metatype - is a dto file
         if (!metatype || !this.toValidate(metatype)) {
             return value;
+        }
+
+        value.cost = +value.cost;
+        value.weight = +value.weight;
+        value.bonuses = JSON.parse(value.bonuses);
+        value.category = JSON.parse(value.category);
+        value.chartDays = JSON.parse(value.chartDays);
+        value.customFields = JSON.parse(value.customFields);
+        
+        if (!Number(value.cost) || !Number(value.weight)) {
+            throw new BadRequestException('Validation Failed');
         }
         
         const object = plainToClass(metatype, value);

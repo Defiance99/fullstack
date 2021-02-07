@@ -75,3 +75,6 @@ export class AuthService {
 // 1. импорт config из dotenv и его вызов config()
 // 2. ServiceConfig в конструкторе, затем configService.get<string>('SOME_FIELD'), 
 //
+// Как составить refresh token и бд для него?
+// 1. 
+//

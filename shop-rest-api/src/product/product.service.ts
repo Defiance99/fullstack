@@ -13,16 +13,10 @@ export class ProductService {
         private productRepository: Repository<Product>
     ) {}
 
-    /* async create(productDto: CreateProductDto) {
-        return this.productRepository.insert(productDto);
-    } */
-
-    async create(images: [], productDto: CreateProductDto) {
+    async create(images: [], productDto: CreateProductDto)/* : Promise<Product> */ {
         productDto['images'] = images;
-        console.log(images);
         console.log(productDto);
-
-        return await this.productRepository.save(productDto);
+        /* return await this.productRepository.save(productDto); */
     }
 
     async createTest(product: CreateProductDto) {
