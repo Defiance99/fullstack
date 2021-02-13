@@ -1,10 +1,11 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, ParseIntPipe, Post, UploadedFiles, UseInterceptors, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Request, HttpCode, HttpStatus, ParseIntPipe, Post, UploadedFiles, UseInterceptors, UsePipes } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductService } from './product.service';
 import { CustomValidationPipe } from 'src/common/validation.pipe';
 import { ProductValidationPipe } from './pipes/product-validation.pipe';
+import { editFileName, imageFileFilter } from 'src/utils/file-upload.utils';
 
 @Controller('api/product')
 export class ProductController {
@@ -13,18 +14,16 @@ export class ProductController {
 
     }
 
-    @Post('upload')
-    @UseInterceptors(FilesInterceptor('images', 5, {
+    @Post('uploadMultipleFiles')
+    @UseInterceptors(FilesInterceptor('images', 6, {
         storage: diskStorage({
             destination: 'uploads/',
-            fileName: (req, file, cb) => {
-                const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
-                cb(null, `${randomName}-${file.originalname}`)
-            }
-        })
+            fileName: editFileName,
+            fileFilter: imageFileFilter,
+        }),
     }))
-    async uploadedFile(
-        @Body(new ProductValidationPipe()) createProductDto: CreateProductDto, 
+    async uploadedMultipleFile(
+        @Body(new ProductValidationPipe()) createProductDto: CreateProductDto, @Request() req,
         @UploadedFiles() images) {
         await this.productService.create(images, createProductDto);
     }

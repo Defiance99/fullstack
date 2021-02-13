@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { UserDeviceDto } from 'src/users/dto/user-device.dto';
 import { UsersService } from 'src/users/users.service';
 import { SignInDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
@@ -28,7 +29,7 @@ export class AuthService {
         }
     }
 
-    async registerUser(dataUser: SignUpDto) {
+    async registerUser(dataUser: SignUpDto, device: UserDeviceDto) {
         const user = await this.userService.findByLogin(dataUser.login);
 
         if (!user) {
@@ -36,7 +37,7 @@ export class AuthService {
             const hash = await bcrypt.hashSync(dataUser.password, salt);
             dataUser.password = hash;
 
-            this.userService.create(dataUser);
+            this.userService.create(dataUser, device);
         }else {
             throw new HttpException('This login already exist', HttpStatus.CONFLICT)
         }

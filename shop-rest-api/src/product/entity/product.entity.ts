@@ -1,5 +1,5 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { CustomFields } from "./entity/custom-fields";
+import { Column, Entity, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { CustomField } from "./customFields";
 
 @Entity()
 export class Product {
@@ -33,9 +33,9 @@ export class Product {
     @Column({type: 'text'})
     description: string;
 
-    /* @ManyToMany(type => CustomFields, {cascade: true})
+   /*  @OneToOne(type => CustomField)
     @JoinTable()
-    customFields: CustomFields[]; */
+    customFields: CustomField */
     @Column('simple-array')
     customFields: object[];
 

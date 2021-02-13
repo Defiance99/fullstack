@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Request, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-users.dto';
 import { UsersService } from './users.service';
 
@@ -7,11 +7,13 @@ export class UsersController {
 
     constructor (private userService: UsersService) {}
 
-    @Post()
+    /* @Post()
     @HttpCode(HttpStatus.CREATED)
-    async createUser(@Body() user: CreateUserDto) {
-        this.userService.create(user);
-    }
+    async createUser(@Body() user: CreateUserDto, @Request() req) {
+        let device;
+        let {ip = req.ip, browser = req.headers['sec-ch-ua'], userAgent = req.headers['user-agent']} = device;
+        this.userService.create(user, device);
+    } */
 
     /* @Post()
     async findOne(@Body() login: string) {

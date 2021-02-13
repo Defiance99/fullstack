@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Device } from "src/users/entity/user-device.entity";
 
 @Entity()
 export class User {
@@ -15,4 +15,7 @@ export class User {
 
     @Column({type: 'tinytext'})
     password?: string
+
+    @OneToMany(type => Device, device => device.user)
+    devices: Device[]
 }

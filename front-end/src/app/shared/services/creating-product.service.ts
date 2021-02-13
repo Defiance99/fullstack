@@ -35,7 +35,7 @@ export class CreateProductService {
 
         console.log(fd.get('images'));
 
-        return this.http.post('/api/product/upload', fd);
+        return this.http.post('/api/product/uploadMultipleFiles', fd);
     }
 
 }

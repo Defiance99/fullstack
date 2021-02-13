@@ -12,8 +12,12 @@ export class AuthController {
 
     @Post('signUp')
     @HttpCode(HttpStatus.CREATED)
-    async signUp(@Body(new CustomValidationPipe()) dataSignUp: SignUpDto) {
-        return this.authService.registerUser(dataSignUp);
+    async signUp(@Body(new CustomValidationPipe()) dataSignUp: SignUpDto, @Request() req) {
+        console.log(req)
+        let device;
+        let {ip = req.headers['ip'], browser = req.headers['sec-ch-ua'], userAgent = req.headers['user-agent']} = device;
+        console.log('Device: ',device);
+        return this.authService.registerUser(dataSignUp, device);
     }
     
     @Post('signIn')

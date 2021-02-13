@@ -18,6 +18,8 @@ export class ProductValidationPipe implements PipeTransform {
         value.customFields = JSON.parse(value.customFields);
         
         if (!Number(value.cost) || !Number(value.weight)) {
+
+            
             throw new BadRequestException('Validation Failed');
         }
         

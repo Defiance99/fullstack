@@ -2,7 +2,10 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-users.dto';
-import { User } from './users.entity';
+import { UserDeviceDto } from './dto/user-device.dto';
+import { Device } from './entity/user-device.entity';
+import { User } from './entity/users.entity';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UsersService {
@@ -23,8 +26,16 @@ export class UsersService {
         } */
     }
 
-    async create(user: CreateUserDto) {
-        return await this.userRepository.insert(user);
+    async create(user: CreateUserDto, device: UserDeviceDto) {
+        let token = uuidv4();
+        let createdAt = new Date();
+        let expiredAt = createdAt.setDate(createdAt.getDate() + 60);
+        console.log('createdAt:', createdAt)
+        console.log('expiredAt:', expiredAt)
+        console.log('token:', token)
+        /* device = {token, createdAt, expiredAt} */
+
+        /* return await this.userRepository.insert(user); */
     }
 
     async getAll(): Promise<User[]> {
