@@ -6,23 +6,23 @@ export class Device {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({type: 'text'})
     ip: string
 
-    @Column()
+    @Column({type: 'text'})
     browser: string
 
-    @Column()
+    @Column({type: 'text'})
     userAgent: string
 
-    @Column()
+    @Column({type: 'text'})
     token: string
 
-    @Column()
-    expiredAt: Date
+    @Column({type: 'bigint'})
+    expiredAt: number
 
-    @Column()
-    createdAt: Date
+    @Column({type: 'bigint'})
+    createdAt: number
 
     @ManyToOne(type => User, user => user.devices)
     user: User;

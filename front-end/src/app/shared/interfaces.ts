@@ -10,3 +10,15 @@ export interface Product {
     description: string
     customFields: string[]
 }
+
+export interface User {
+    userName: string
+    email: string
+    login: string
+    password: string
+}
+
+export interface SignInForm {
+    login: string
+    password: string
+}

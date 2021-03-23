@@ -3,7 +3,7 @@ import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
 @Injectable() 
-export class CustomValidationPipe implements PipeTransform {
+export class ValidationPipe implements PipeTransform {
     async transform(value: any, {metatype}: ArgumentMetadata) {
         console.log(metatype, 'validation', value);
         // metatype - is a dto file

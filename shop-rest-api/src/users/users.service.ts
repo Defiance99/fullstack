@@ -14,7 +14,7 @@ export class UsersService {
 
     constructor(
         @InjectRepository(User)
-        private userRepository: Repository<User>
+        private userRepository: Repository<User>,
     ) {}
 
     async findByLogin(login: string): Promise<User | undefined> {
@@ -26,16 +26,27 @@ export class UsersService {
         } */
     }
 
-    async create(user: CreateUserDto, device: UserDeviceDto) {
+    async create(user: CreateUserDto, device: UserDeviceDto): Promise<User> {
+        let userTable = {};
         let token = uuidv4();
-        let createdAt = new Date();
-        let expiredAt = createdAt.setDate(createdAt.getDate() + 60);
-        console.log('createdAt:', createdAt)
-        console.log('expiredAt:', expiredAt)
-        console.log('token:', token)
-        /* device = {token, createdAt, expiredAt} */
+        let today = new Date();
+        let createdAt = +(new Date());
+        let expiredAt = today.setDate(today.getDate() + 60);
 
-        /* return await this.userRepository.insert(user); */
+        device['token'] = token;
+        device['createdAt'] = createdAt;
+        device['expiredAt'] = expiredAt;
+
+        userTable = user;
+        userTable['devices'] = [device];
+        console.log('user', userTable)
+        console.log('device', device)
+        return await this.userRepository.save(userTable);
+        /* return await this.userRepository.save(userTable); */
+        /* return await this.userRepository.createQueryBuilder('user') // назначаем псевдоним таблицы
+            .leftJoinAndSelect('user.devices', 'device', 'device =: device', {'device': device}) // у псевдонима таблицы сохраняем в device
+            .where('user = :user', {'user': user}) */
+
     }
 
     async getAll(): Promise<User[]> {

@@ -57,7 +57,7 @@
     </div>
 </section>
 
-<section class="right-side-admin-panel">
+<section class="right-side-admin-panel" [ngClass]="{'auth-page-style': isAuthPage}">
     <div class="header-admin-page">
         <div class="header-admin-page__container">
             <h1 class="header-admin-page_title">{{titlePage}}</h1>
@@ -69,11 +69,7 @@
                 </div>
             </div>
         </div>
-
-        
     </div>
-    
-
     <router-outlet></router-outlet>
 </section>
 

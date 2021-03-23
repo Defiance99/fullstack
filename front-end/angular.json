@@ -33,11 +33,9 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/styles/index.scss",
+              "src/assets/styles/index.scss"
             ],
-            "scripts": [
-
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -131,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "front-end"
+  "defaultProject": "front-end",
+  "cli": {
+    "analytics": false
+  }
 }

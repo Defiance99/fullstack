@@ -1,5 +1,5 @@
 import { Body, Controller, HttpCode, Request, HttpStatus, Post, UseGuards, Get } from '@nestjs/common';
-import { CustomValidationPipe } from 'src/common/validation.pipe';
+import { ValidationPipe } from 'src/common/validation.pipe';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/sign-up.dto';
 import { GoogleAuthGuard } from './guards/google-auth.guard';
@@ -12,11 +12,12 @@ export class AuthController {
 
     @Post('signUp')
     @HttpCode(HttpStatus.CREATED)
-    async signUp(@Body(new CustomValidationPipe()) dataSignUp: SignUpDto, @Request() req) {
-        console.log(req)
-        let device;
-        let {ip = req.headers['ip'], browser = req.headers['sec-ch-ua'], userAgent = req.headers['user-agent']} = device;
-        console.log('Device: ',device);
+    async signUp(@Body(new ValidationPipe()) dataSignUp: SignUpDto, @Request() req) {
+        let ip = req.connection.remoteAddress;
+        let browser = req.headers['sec-ch-ua'];
+        let userAgent = req.headers['user-agent'];
+        let device = {ip, browser, userAgent};
+        
         return this.authService.registerUser(dataSignUp, device);
     }
     

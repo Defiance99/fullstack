@@ -3,7 +3,7 @@ import { diskStorage } from 'multer';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductService } from './product.service';
-import { CustomValidationPipe } from 'src/common/validation.pipe';
+import { ValidationPipe } from 'src/common/validation.pipe';
 import { ProductValidationPipe } from './pipes/product-validation.pipe';
 import { editFileName, imageFileFilter } from 'src/utils/file-upload.utils';
 
@@ -33,7 +33,7 @@ export class ProductController {
     async postSmth(
         @Body('cost', ParseIntPipe)
         @Body('weight', ParseIntPipe)
-        @Body(new CustomValidationPipe()) product: CreateProductDto
+        @Body(new ValidationPipe()) product: CreateProductDto
         ) {
         this.productService.createTest(product)
         console.log(product);

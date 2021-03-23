@@ -8,6 +8,8 @@ import { MainPanelPageComponent } from './admin-panel-pages/main-panel-page/main
 import { CatalogPanelPageComponent } from './admin-panel-pages/catalog-panel-page/catalog-panel-page.component';
 import { AnalyticsPanelPageComponent } from './admin-panel-pages/analytics-panel-page/analytics-panel-page.component';
 import { SettingsPanelPageComponent } from './admin-panel-pages/settings-panel-page/settings-panel-page.component';
+import { LoginPageComponent } from './admin-panel-pages/login-page/login-page.component';
+import { RegisterPageComponent } from './admin-panel-pages/register-page/register-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,8 @@ const routes: Routes = [
   {
     path: 'admin-panel', component: AdminPanelComponent, children: [
       {path: '', component: MainPanelPageComponent, data: {title: 'Админ панель'}},
+      {path: 'login', component: LoginPageComponent, data: {title: 'Вход в систему'}},
+      {path: 'sign-up', component: RegisterPageComponent, data: {title: 'Регистрация'}},
       {path: 'create-product', component: CreateProductPageComponent, data: {title: 'Создание товара'}},
       {path: 'catalog', component: CatalogPanelPageComponent, data: {title: 'Каталог'}},
       {path: 'analytics', component: AnalyticsPanelPageComponent, data: {title: 'Аналитика'}},

@@ -10,12 +10,15 @@ export class User {
     @Column({type: 'tinytext'})
     userName: string
 
+    @Column({type: 'tinytext'})
+    email: string
+
     @Column({ unique: true})
     login: string
 
     @Column({type: 'tinytext'})
     password?: string
 
-    @OneToMany(type => Device, device => device.user)
+    @OneToMany(type => Device, device => device.user, {cascade: true})
     devices: Device[]
 }

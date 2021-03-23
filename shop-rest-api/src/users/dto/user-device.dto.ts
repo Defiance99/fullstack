@@ -3,6 +3,6 @@ export class UserDeviceDto {
     browser: string
     userAgent: string
     token?: string
-    expiredAt?: Date
-    createdAt?: Date
+    expiredAt?: number
+    createdAt?: number
 }

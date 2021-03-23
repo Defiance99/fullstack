@@ -16,8 +16,11 @@ import { MainPanelPageComponent } from './admin-panel-pages/main-panel-page/main
 import { CatalogPanelPageComponent } from './admin-panel-pages/catalog-panel-page/catalog-panel-page.component';
 import { AnalyticsPanelPageComponent } from './admin-panel-pages/analytics-panel-page/analytics-panel-page.component';
 import { SettingsPanelPageComponent } from './admin-panel-pages/settings-panel-page/settings-panel-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
+import { LoginPageComponent } from './admin-panel-pages/login-page/login-page.component';
+import { RegisterPageComponent } from './admin-panel-pages/register-page/register-page.component';
+import { TokenInterseptor } from './shared/classes/token.interseptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { SwiperModule } from 'swiper/angular';
     MainPanelPageComponent,
     CatalogPanelPageComponent,
     AnalyticsPanelPageComponent,
-    SettingsPanelPageComponent
+    SettingsPanelPageComponent,
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,13 @@ import { SwiperModule } from 'swiper/angular';
     HttpClientModule,
     SwiperModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterseptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

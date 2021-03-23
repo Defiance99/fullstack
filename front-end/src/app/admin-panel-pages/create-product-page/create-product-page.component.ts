@@ -1,6 +1,6 @@
 import { AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
-import { CreateProductService } from 'src/app/shared/services/creating-product.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 import SwiperCore from "swiper/core";
 
 @Component({
@@ -20,7 +20,7 @@ export class CreateProductPageComponent implements OnInit, AfterViewChecked {
   isNew: boolean = false;
   swiper!: SwiperCore;
 
-  constructor(private productService: CreateProductService) { }
+  constructor(private productService: ProductService) { }
 
   ngAfterViewChecked() {
     this.swiper.updateSlidesClasses();
