@@ -1,0 +1,14 @@
+@media (max-width: 800px) {
+    .right-side-admin-panel {
+        left: 40px;
+        width: calc(100% - 40px);
+
+        .create-product-wrapper {
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+    }
+}
+@media (max-width: 540px) {
+    
+}

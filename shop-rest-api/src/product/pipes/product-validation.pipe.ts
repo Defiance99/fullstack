@@ -10,16 +10,13 @@ export class ProductValidationPipe implements PipeTransform {
             return value;
         }
 
-        value.cost = +value.cost;
         value.weight = +value.weight;
         value.bonuses = JSON.parse(value.bonuses);
         value.category = JSON.parse(value.category);
         value.chartDays = JSON.parse(value.chartDays);
         value.customFields = JSON.parse(value.customFields);
         
-        if (!Number(value.cost) || !Number(value.weight)) {
-
-            
+        if (!Number(value.weight)) {
             throw new BadRequestException('Validation Failed');
         }
         

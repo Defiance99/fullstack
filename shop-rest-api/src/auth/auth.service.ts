@@ -3,7 +3,6 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UserDeviceDto } from 'src/users/dto/user-device.dto';
 import { UsersService } from 'src/users/users.service';
-import { SignInDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
 
 @Injectable()
@@ -43,12 +42,18 @@ export class AuthService {
         }
     }
 
-    async login(dataUser: SignInDto) {
+    async login(req: any) {
+        let dataUser = req.user;
+
         const user = await this.userService.findByLogin(dataUser.login);
+
         if (user) {
+            let token = await this.userService.updateRefreshToken(user.id, req.headers['user-agent'], req.connection.remoteAddress);
             const payload = {userName: user.userName, id: user.id}
+
             return {
-                access_token: this.jwtService.sign(payload)
+                access_token: this.jwtService.sign(payload),
+                refresh_token: token
             }
         }
     }
@@ -60,6 +65,21 @@ export class AuthService {
         return {
             message: 'User information from google',
             user: req.user
+        }
+    }
+
+    async updateTokens(tokens, req) {
+        let accessToken = this.jwtService.decode(tokens['access_token']);
+        const isAuth = await this.userService.checkRefreshToken(accessToken['id'], tokens['refresh_token'], accessToken['exp']);
+
+        if (isAuth) {
+            let token = await this.userService.updateRefreshToken(accessToken['id'], req.headers['user-agent'], req.connection.remoteAddress);
+            const payload = {userName: accessToken['userName'], id: accessToken['id']}
+
+            return {
+                access_token: this.jwtService.sign(payload),
+                refresh_token: token
+            }
         }
     }
 }

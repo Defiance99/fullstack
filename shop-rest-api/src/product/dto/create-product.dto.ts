@@ -3,36 +3,32 @@ import {
     Length,
     IsNotEmpty,
     IsString,
-    IsArray
+    IsArray,
+    IsIn,
+    Matches
   } from 'class-validator';
 
 export class CreateProductDto {
     @IsNotEmpty()
     @IsString()
-    @Length(4,20)
+    @Length(4,55)
     name: string   
     
     @IsNotEmpty()
-    @IsInt()
-    cost: number
+    @Matches(/^([1-9][0-9]*)+(.[0-9]{1,2})?$/)
+    price: string
     
     @IsNotEmpty()
     @IsInt()
     weight: number
     
     @IsArray()
-    @IsString({
-        each: true
-    })
     bonuses: string[]
 
     @IsNotEmpty()
     @IsString()
+    @IsIn(['RUB', 'EUR', 'USD'])
     currency: string
-
-    @IsNotEmpty()
-    @IsString()
-    weightUnit: string
 
     @IsNotEmpty()
     @IsArray()

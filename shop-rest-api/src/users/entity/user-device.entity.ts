@@ -4,7 +4,7 @@ import { User } from "src/users/entity/users.entity";
 @Entity()
 export class Device {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number
 
     @Column({type: 'text'})
     ip: string
@@ -15,15 +15,15 @@ export class Device {
     @Column({type: 'text'})
     userAgent: string
 
-    @Column({type: 'text'})
+    @Column({type: 'text', nullable: true})
     token: string
 
-    @Column({type: 'bigint'})
+    @Column({type: 'bigint', nullable: true})
     expiredAt: number
 
-    @Column({type: 'bigint'})
+    @Column({type: 'bigint', nullable: true})
     createdAt: number
 
     @ManyToOne(type => User, user => user.devices)
-    user: User;
+    user: User
 }

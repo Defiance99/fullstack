@@ -1,0 +1,44 @@
+<div class="product-card__wrapper">
+    <div class="product-card__img-preview">
+        <div *ngIf="isLoading; else loader"></div>
+        <img [src]="product.previewImage" alt="" class="img"  [hidden]="!isLoading" (load)="hideLoader()"> 
+        <ng-template #loader>
+            <app-loader></app-loader>
+        </ng-template>
+
+        <div class="product-card__state_wrapper">
+            <div class="product-card__state product-card__state_hit" *ngIf="product.bonuses[0]">{{product.bonuses[0]}}</div>
+            <div class="product-card__state product-card__state_discount" *ngIf="product.bonuses[1]">{{product.bonuses[1]}}</div>
+            <div class="product-card__state product-card__state_new" *ngIf="product.bonuses[2]">{{product.bonuses[2]}}</div>
+        </div>
+    </div>
+    <div class="product-card__body">
+        <div class="product-card__title_wrapper">
+            <a [routerLink]="['/product', product.id]" class="title product-card__title">
+                {{product.name}}
+            </a>
+        </div>
+        <div class="product-card__short-info">
+            <div class="product-card__left">
+                <p class="text text-regular">
+                    {{product.weight}}г
+                </p>
+            </div>
+            <div class="product-card__right">
+                <p class="text text-light">
+                    {{product.price | currency: product.currency: 'symbol-narrow'}}
+                </p>
+            </div>
+        </div>
+        <div class="product-card__order-items">
+            <div class="product-card__left">
+                <div class="order__minus" (click)="decrement()">-</div>
+                <div class="order__quantity">{{counter}}</div>
+                <div class="order__plus" (click)="increment()">+</div>
+            </div>
+            <div class="product-card__right">
+                <button class="order__add-button button" (click)="addToCart(product)">В корзину</button>
+            </div>
+        </div>
+    </div>
+</div>

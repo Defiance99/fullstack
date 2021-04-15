@@ -1,0 +1,15 @@
+.c-mat-table {
+    width: 100%;
+
+    .order__quantity {
+        font-size: 20px;
+        font-family: var(--font-semibold);
+        font-weight: 100;
+    }
+
+    .product-card__left {
+        justify-content: space-around;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+}

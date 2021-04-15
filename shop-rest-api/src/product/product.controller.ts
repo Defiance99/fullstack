@@ -1,11 +1,12 @@
-import { Body, Controller, Get, Request, HttpCode, HttpStatus, ParseIntPipe, Post, UploadedFiles, UseInterceptors, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Request, Post, UploadedFiles, UseInterceptors, UseGuards, Query, Param, Res } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductService } from './product.service';
-import { ValidationPipe } from 'src/common/validation.pipe';
 import { ProductValidationPipe } from './pipes/product-validation.pipe';
 import { editFileName, imageFileFilter } from 'src/utils/file-upload.utils';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { join } from 'path';
 
 @Controller('api/product')
 export class ProductController {
@@ -15,32 +16,49 @@ export class ProductController {
     }
 
     @Post('uploadMultipleFiles')
+    @UseGuards(JwtAuthGuard)
     @UseInterceptors(FilesInterceptor('images', 6, {
         storage: diskStorage({
             destination: 'uploads/',
-            fileName: editFileName,
-            fileFilter: imageFileFilter,
+            filename: editFileName,
+            filefilter: imageFileFilter,
         }),
     }))
     async uploadedMultipleFile(
         @Body(new ProductValidationPipe()) createProductDto: CreateProductDto, @Request() req,
         @UploadedFiles() images) {
-        await this.productService.create(images, createProductDto);
-    }
-
-    @Post()
-    //@UsePipes(new CustomValidationPipe())
-    async postSmth(
-        @Body('cost', ParseIntPipe)
-        @Body('weight', ParseIntPipe)
-        @Body(new ValidationPipe()) product: CreateProductDto
-        ) {
-        this.productService.createTest(product)
-        console.log(product);
+        console.log('IMGS LENGTYH:', images.length)
+        let catalogImgs: string[] = [];
+        let previewImg: string;
+        for (let i = 0; i < images.length; i++) {
+            if (i == 0) previewImg = images[i]['path'];
+            else catalogImgs.push(images[i]['path']);
+        }
+        await this.productService.create(catalogImgs, previewImg ,createProductDto, req.user.id);
     }
 
     @Get('getAll')
     async getAll() {
         return this.productService.getAll();
+    }
+
+    @Get('getProducts')
+    async getProducts(@Query() query) {
+        return this.productService.getProducts(query.limit);
+    }
+
+    @Get('getByFilters')
+    async getByFilters(@Query() query) {
+        return this.productService.findByFilters(query.category, query.day);
+    }
+
+    @Get('uploads/:imagename')
+    async findImage(@Param('imagename') imagename: string, @Res() res) {
+        return res.sendFile(join(process.cwd(), 'uploads/' + imagename));
+    }
+
+    @Get('getById/:id')
+    async getById(@Param('id') id: string) {
+        return this.productService.findById(id);
     }
 }

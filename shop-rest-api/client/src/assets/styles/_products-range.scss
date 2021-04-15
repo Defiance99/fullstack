@@ -1,0 +1,68 @@
+.products-range {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-top: 80px;
+    padding-top: 50px;
+    padding-bottom: 80px;
+    background-color: #FAFAFA;
+
+    .transition-image-top {
+        display: flex;
+        align-items: flex-start;
+        position: absolute;
+        top: -30px;
+        width: 100%;
+        height: 30px;
+        background: url('../images/transition-part2.png');
+        background-size: cover;
+        z-index: 10;
+    }
+
+    .transition-image-bottom {
+        display: flex;
+        align-items: flex-start;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 30px;
+        background: url('../images/transition-back-img.png');
+        background-size: cover;
+        z-index: 10;
+    }
+    .products-range-container {
+        @extend %menu-template;
+
+        .product-card-container {
+            flex-wrap: nowrap !important;
+            overflow: hidden;
+        }
+        .shedule-days {
+            flex-wrap: nowrap !important;
+            overflow: hidden;
+            @media (max-width: 900px) {
+                p {
+                    max-width: 170px !important;
+                    margin-right: 53px !important;
+                }
+            }
+
+            @media (max-width: 500px) {
+                margin-top: 25px !important;
+
+                p {
+                    font-size: 10px !important;
+                }    
+            }
+        }
+    }
+
+    @media (max-width: 1300px) {
+        .custom-left-arrow, .custom-right-arrow {
+            display: none;
+        }
+    }
+}

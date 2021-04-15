@@ -1,0 +1,181 @@
+@font-face {
+    font-family: 'Cyntho Next bold';
+    src: url('../fonts/CynthoNext-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next';
+    src: url('../fonts/CynthoPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next light';
+    src: url('../fonts/CynthoNext-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cyntho Next Medium';
+    src: url('../fonts/CynthoNext-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+$cyntho-next-bold: 'Cyntho Next bold';
+$cyntho-next-normal: 'Cyntho Next';
+$cyntho-next-light: 'Cyntho Next light';
+$cyntho-next-medium: 'Cyntho Next medium';
+
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 468px;
+    background-color: $title-passive-color;
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: $content-width;
+        height: 100%;
+
+        .brand-logo {
+            margin-top: 42px;
+        }
+
+        .footer-menu {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 526px;
+            color: #FFF;
+        }
+        .footer-menu a:hover {
+            cursor: pointer;
+        }
+
+        .instagram-logo {
+            position: relative;
+            margin-right: 22px;
+            
+
+            img, span {
+                position: absolute;
+            }
+
+            img, span:hover {
+                cursor: pointer;
+            }
+
+            .instagram-logo-outside {
+
+            }
+
+            .instagram-logo-inside {
+                width: 10px;
+                height: 10px;
+                top: 4px;
+                left: 4px;
+            }
+            .instagram-logo-dot {
+                top: 4px;
+                left: 14px;
+                padding: 1px;
+                background-color: #FFF;
+                border-radius: 100%;
+            }
+        }
+
+        .contacts-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: $content-width;
+            font-family: $cyntho-next-bold;
+            font-size: 14px;
+            color: #FFF;
+            border-top: 1px solid #FFFFFF;
+
+            .left-side-block {
+                width: 100%;
+                max-width: 540px;
+                padding-top: 32px;
+                padding-bottom: 40px;
+            }
+
+            .right-side-block {
+                max-width: 329px;
+                padding-top: 32px;
+                padding-bottom: 40px;
+            }
+        }
+    }
+
+    @media (max-width: $content-width) {
+        .left-side-block {
+            padding: 0 0 0 $padding-low-screen;
+        }
+        .right-side-block {
+            padding: 0 $padding-low-screen 0 0;
+        }
+    }
+
+    @media (max-width: 800px) {
+        height: 726px;
+
+        .instagram-logo {
+            position: relative !important;
+            bottom: 29px;
+        }
+
+        .footer-menu {
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 192px;
+        }
+        
+        .contacts-block {
+            height: 156px;
+
+            .left-side-block {
+                p {
+                    max-width: 319px;
+                }
+                p:nth-child(2) {
+                    margin: 12px 0;
+                }
+            }
+            .right-side-block {
+                margin-bottom: 40px;
+                text-align: right;
+            }
+        }
+    }
+    @media (max-width: 700px) {
+        .right-side-block {
+            padding-top: 0 !important;
+            margin-bottom: 40px;
+            text-align: right;
+        }
+    }
+    @media (max-width: 450px) {
+        .contacts-block {
+            .left-side-block {
+                font-size: 8px;
+            }
+            .right-side-block {
+                padding-top: 30px;
+                font-size: 8px;
+            }
+        }
+    }
+}

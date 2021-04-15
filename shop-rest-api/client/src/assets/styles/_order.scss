@@ -1,0 +1,35 @@
+.order__minus, .order__quantity, .order__plus {
+    display: flex;
+    align-items: center;
+}
+
+.order__minus, .order__plus {
+    transition: 250ms;
+
+    &:hover {
+        cursor: pointer;
+        color: var(--active-primary-color);
+    }
+}
+
+.order__minus {
+    font-size: 34px;
+    color: var(--primary-color);
+}
+
+.order__quantity {
+    font-size: 27px;
+    font-family: $cyntho-next-regular;
+    color: var(--title-color);
+    margin: 0 4px;
+}
+
+.order__plus {
+    font-size: 27px;
+    color: var(--primary-color);
+}
+
+.order__add-button {
+    width: 115px;
+    height: 35px;
+}

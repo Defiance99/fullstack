@@ -1,0 +1,88 @@
+<!-- Modal window Begin -->
+
+<section class="modal-window">
+    <div class="modal-window-field"></div>
+
+    <!-- Review Modal window Begin -->
+    <form class="review-modal-window-container" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+        <div class="review-modal-window-form">
+
+            <div class="modal-window-button-close">
+                <span class="left-side-close-button"></span>
+                <span class="right-side-close-button"></span>
+            </div>
+
+            <h2 class="review-title">Оставьте ваш отзыв:</h2>
+            <div class="review-form">
+                <div class="name-review-form element-review-form">
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Тема</mat-label>
+                        <input matInput placeholder="Муха в супе" formControlName="theme">
+                        <mat-icon matSuffix>edit</mat-icon>
+                        <!--  <mat-hint>Hint</mat-hint> -->
+                    </mat-form-field>
+                </div>
+                <div class="review-form__rating d-flex">
+                    <span class="review-form__title">Ваша оценка:</span>
+                    <app-rating-control class="d-flex" [formControl]="rating"></app-rating-control>
+                </div>
+                <div class="email-review-form element-review-form">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ваш отзыв</mat-label>
+                        <textarea matInput formControlName="message" rows="12"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="submit-review-form">
+                    <input type="text" class="button button-primary m0-auto" type="submit" value="Отправить"
+                        [disabled]="reviewForm.invalid">
+                </div>
+                <div class="review-modal__error" *ngIf="!isAuthenticated">
+                    Для того, чтобы написать отзыв нужно <a routerLink="/admin-panel">авторизоваться</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Review Modal window Close -->
+</section>
+
+<!-- Modal window Close -->
+
+<section class="reviews-clients">
+    <div class="reviews-clients-container">
+        <p class="header-reviews">ОТЗЫВЫ</p>
+
+        <div class="reviews-block">
+            <div class="review-block-slider">
+                <div class="review-block-wrapper">
+                    <swiper [config]="config" *ngIf="reviews$ | async as reviews; else loader;">
+                        <ng-template swiperSlide *ngFor="let review of reviews">
+                            <div class="review-block">
+                                <p class="review-title title">
+                                    {{review.theme}}
+                                </p>
+                                <p class="review-text">
+                                    {{review.message}}
+                                </p>
+                                <div>
+                                    <p class="author-review">{{review.user['userName']}}</p>
+                                    <div class="rating">
+                                        <app-flow-rating [review]="review" class="d-flex"></app-flow-rating>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </swiper>
+
+                    <ng-template #loader>
+                        <app-loader></app-loader>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+        <p class="buttons-block">
+            <a class="button-primary button-write-review" (click)="openReviewWindow()">НАПИСАТЬ ОТЗЫВ</a>
+            <a class="button" routerLink='/reviews'>ВСЕ ОТЗЫВЫ</a>
+        </p>
+    </div>
+</section>

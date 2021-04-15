@@ -1,0 +1,118 @@
+.single-product {
+    background-color: var(--single-product-bg);
+
+    .product-card__order-items {
+        max-width: 210px;
+        align-items: center;
+    }
+
+    .product-card__left {
+        justify-content: space-around;
+        width: 70px;
+        height: 35px;
+        border: 1px #797272 solid;
+        
+        .order__quantity {
+            margin: 0;
+        }
+    }
+
+    .container {
+        margin: 0 auto;
+        padding: 80px 0;
+    }
+}
+
+.single-product__body {
+    max-width: 450px;
+    width: 100%;
+    padding: 15px;
+    padding-left: 60px;
+}
+
+.single-product__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.single-product__img_wrapper {
+    max-width: 465px;
+    width: 100%;
+}
+
+.single-product__img-preview {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    height: 500px;
+}
+
+.single-product__images-catalog {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.single-product__image-catalog_wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 2px;
+    transition: 300ms;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 5px 1px #928989;
+    }
+}
+
+.single-product__title {
+    font-size: 26px;
+    color: #282828;
+    margin: 15px 0;
+    font-weight: 300;
+    border-bottom: 1px solid #d8d5d5;
+    padding-bottom: 10px;
+    line-height: 1;
+}
+
+.single-product__categories_wrapper {
+    display: flex;
+    margin: 15px 0;
+}
+
+.single-product__category, .chart-days__item {
+    position: relative;
+    margin: 0 9px;
+
+    &::after {
+        content: '/';
+        position: absolute;
+        right: -12px;
+    }
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.single-product__description {
+    line-height: 2;
+    color: #282828;
+    font-size: 15px;
+}
+
+.previewImg {
+    border-radius: 5px;
+    box-shadow: 0 0 3px 1px rgb(0,0,0,.1);
+}
+
+.single-product__value-field {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.related-products__text {
+    margin-bottom: 20px;
+}

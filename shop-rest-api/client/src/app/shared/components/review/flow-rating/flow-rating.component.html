@@ -1,0 +1,6 @@
+<div *ngFor="let item of [].constructor(review.maxRating); let i = index">
+    <img *ngIf="review.rating > i; else passiveRating" alt="rating image" src="/assets/images/rating-img.png">
+    <ng-template #passiveRating>
+        <img alt="rating image" src="/assets/images/passive-rating-img.png">
+    </ng-template>
+ </div>

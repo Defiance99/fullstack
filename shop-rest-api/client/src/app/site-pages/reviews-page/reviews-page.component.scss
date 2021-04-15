@@ -1,0 +1,36 @@
+.reviews__header {
+    border-top: 1px rgba(0,0,0,.14) solid;
+
+    .title {
+        color: #282828;
+    }
+
+    .reviews__user-name {
+        display: flex;
+        align-items: center;
+        color: #282828;
+    }
+}
+
+.reviews_left {
+    max-width: 300px;
+    width: 100%;
+}
+
+.reviews__theme {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 550px;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .reviews__title-rating {
+        display: none !important;
+    }
+}
+@media (max-width: 451px) {
+    .reviews_center {
+        display: none !important;
+    }
+}

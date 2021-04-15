@@ -1,0 +1,41 @@
+<form class="" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+
+    <div class="full-container">
+        <div class="sign-auth-form__wrapper primary-black">
+            <div class="sign-auth-form__header">
+                <h3 class="text-center sign-auth-form__title">Sign In Form</h3>
+            </div>
+            <div class="sign-auth-form__body">
+                <mat-form-field class="sign-auth-form__field pt20" appearance="outline">
+                    <mat-label>Логин</mat-label>
+                    <input 
+                        matInput 
+                        formControlName="login"
+                        class="sign-auth-form__input"
+                    >
+                </mat-form-field>
+                <mat-form-field class="sign-auth-form__field sign-auth-form__field_last-child" appearance="outline">
+                    <mat-label>Пароль</mat-label>
+                    <input 
+                        matInput
+                        formControlName="password"
+                        class="sign-auth-form__input"
+                    >
+                </mat-form-field>
+                <div class="sign-auth-form__submit-wrapper">
+                    <div
+                        (click)="onSubmit()"
+                        class="sign-auth-form__submit-trigger"
+                    >
+                    </div>
+                    <input type="submit" class="sign-auth-form__submit" #submitFormButton>
+                </div>
+                <div class="sign-auth-form__hint-wrapper">
+                    <p class="sign-auth-form__hint">Нет аккаунта? <a routerLink="/admin-panel/sign-up">Зарегистрироваться</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>

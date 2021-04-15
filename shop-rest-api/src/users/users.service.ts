@@ -13,40 +13,56 @@ export class UsersService {
     readonly saltRounds: number = 10;
 
     constructor(
-        @InjectRepository(User)
-        private userRepository: Repository<User>,
+        @InjectRepository(User) private userRepository: Repository<User>,
+        @InjectRepository(Device) private deviceRepository: Repository<Device>
     ) {}
 
     async findByLogin(login: string): Promise<User | undefined> {
         const user = await this.userRepository.findOne({login});
         if (user) {
             return user;
-        }/* else {
-            throw new HttpException('User with the login does not exist', HttpStatus.NOT_FOUND);
-        } */
+        }
     }
 
     async create(user: CreateUserDto, device: UserDeviceDto): Promise<User> {
         let userTable = {};
+        userTable = user;
+        userTable['devices'] = [device];
+
+        return await this.userRepository.save(userTable);
+
+    }
+
+    async updateRefreshToken(userId: number, device: string, ip: string) {
+        let refreshToken = await this.createRefreshToken();
+
+        await this.deviceRepository
+            .createQueryBuilder('device')
+            .leftJoin('device.user', 'user')
+            .where('user.id = :id', {
+                'id': userId,
+                'userAgent': device,
+                'ip': ip
+            })
+            .update(Device)
+            .set({
+                'token': refreshToken.token,
+                'expiredAt': refreshToken.expiredAt,
+                'createdAt': refreshToken.createdAt
+            })
+            .execute()
+
+        return refreshToken.token;
+            
+    }
+
+    async createRefreshToken() {
         let token = uuidv4();
         let today = new Date();
         let createdAt = +(new Date());
         let expiredAt = today.setDate(today.getDate() + 60);
 
-        device['token'] = token;
-        device['createdAt'] = createdAt;
-        device['expiredAt'] = expiredAt;
-
-        userTable = user;
-        userTable['devices'] = [device];
-        console.log('user', userTable)
-        console.log('device', device)
-        return await this.userRepository.save(userTable);
-        /* return await this.userRepository.save(userTable); */
-        /* return await this.userRepository.createQueryBuilder('user') // назначаем псевдоним таблицы
-            .leftJoinAndSelect('user.devices', 'device', 'device =: device', {'device': device}) // у псевдонима таблицы сохраняем в device
-            .where('user = :user', {'user': user}) */
-
+        return {token, createdAt, expiredAt};
     }
 
     async getAll(): Promise<User[]> {
@@ -55,6 +71,19 @@ export class UsersService {
 
     async removeById(id: string) {
         return await this.userRepository.delete(id);
+    }
+
+    async checkRefreshToken(userId: number, refreshToken: string, exp: number) {
+        return await this.deviceRepository
+            .createQueryBuilder('device')
+            .leftJoin('device.user', 'user')
+            .where('user.id = :id', {
+                'id': userId,
+                'token': refreshToken,
+                'expiredAt': exp
+            })
+            .select('device.id')
+            .getOne();
     }
 
 }

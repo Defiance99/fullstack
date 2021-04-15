@@ -1,0 +1,116 @@
+<div class="catalog_wrapper container">
+    <mat-sidenav-container class="side-nav__container">
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+                     <div class="catalog__filters">
+                        <div class="catalog__filters_wrapper">
+                            <div class="catalog__search">
+                                <mat-form-field appearance="legacy">
+                                    <mat-label>Поиск</mat-label>
+                                    <input matInput [(ngModel)]="searchStr">
+                                    <mat-icon matSuffix>search</mat-icon>
+                                    <!-- <mat-hint>Hint</mat-hint> -->
+                                </mat-form-field>
+                            </div>
+                            <div class="catalog__state catalog__item">
+                                <mat-form-field appearance="legacy">
+                                    <mat-label>Информация о товаре:</mat-label>
+                                    <mat-select multiple [(value)]="state">
+                                        <mat-option value="Хит">Хит</mat-option>
+                                        <mat-option value="Скидка">Скидка</mat-option>
+                                        <mat-option value="Новинка">Новинка</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="catalog__category catalog__item">
+                                <mat-form-field>
+                                    <mat-label>Категория продутка</mat-label>
+                                    <mat-select multiple [(value)]="categories">
+                                        <mat-option value="Завтрак">Завтрак</mat-option>
+                                        <mat-option value="Обед">Обед</mat-option>
+                                        <mat-option value="Десерт">Десерт</mat-option>
+                                        <mat-option value="Хлеб и выпечка">Хлеб и выпечка</mat-option>
+                                        <mat-option value="Соусы и намазки">Соусы и намазки</mat-option>
+                                        <mat-option value="Напитки">Напитки</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="catalog__chart-days catalog__item">
+                                <mat-form-field>
+                                    <mat-label>График дней</mat-label>
+                                    <mat-select multiple [(value)]="chartDays">
+                                        <mat-option value="Понедельник">Понедельник</mat-option>
+                                        <mat-option value="Вторник">Вторник</mat-option>
+                                        <mat-option value="Среда">Среда</mat-option>
+                                        <mat-option value="Четверг">Четверг</mat-option>
+                                        <mat-option value="Пятница">Пятница</mat-option>
+                                        <mat-option value="Суббота">Суббота</mat-option>
+                                        <mat-option value="Воскресенье">Воскресенье</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="catalog__currency catalog__item">
+                                <mat-form-field>
+                                    <mat-label>Валюта</mat-label>
+                                    <mat-select [(value)]="currency">
+                                        <mat-option value="USD">USD</mat-option>
+                                        <mat-option value="EUR">EUR</mat-option>
+                                        <mat-option value="RUB">RUB</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="catalog_price catalog__item">
+                                <div class="d-flex flex-column">
+                                    <mat-form-field class="">
+                                        <mat-label>Макс. цена</mat-label>
+                                        <input matInput type="number" [(ngModel)]="maxPrice.price">
+                                    </mat-form-field>
+                                    <mat-slider
+                                        class="catalog__price-slider"
+                                        max="999"
+                                        min="1"
+                                        thumbLabel="true"
+                                        [(ngModel)]="maxPrice.price"
+                                        vertical="false">
+                                    </mat-slider>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <mat-form-field class="">
+                                        <mat-label>Мин. цена</mat-label>
+                                        <input matInput type="number" [(ngModel)]="minPrice.price" [(ngModel)]="price">
+                                    </mat-form-field>
+                                    <mat-slider
+                                        class="catalog__price-slider"
+                                        max="999"
+                                        min="1"
+                                        thumbLabel="true"
+                                        [(ngModel)]="minPrice.price"
+                                        vertical="false">
+                                    </mat-slider>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="button button-primary m0-auto" (click)="clear()">Очистить</button>
+                    </div>
+        </mat-sidenav>
+      
+        <mat-sidenav-content>
+          <p>
+              <button mat-button (click)="sidenav.toggle()">Фильтры <mat-icon matSuffix>settings</mat-icon></button>
+            </p>
+
+          <div class="catalog mt0">
+            <div class="product-cards" *ngIf="products$ | async as products; else loader">
+                <ng-container 
+                    *ngFor="let product of products | search: searchStr | states: state | category: categories | chartDays: chartDays | valuta: currency | rangePrice: maxPrice | rangePrice: minPrice; index as i"
+                >
+                    <app-product-cart [product]=product></app-product-cart>
+                </ng-container>
+            </div>
+        
+            <ng-template #loader>
+                <app-loader></app-loader>
+            </ng-template>
+        </div>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+</div>

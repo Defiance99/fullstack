@@ -1,4 +1,7 @@
-import { Column, Entity, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { OrderDetails } from "src/order/entity/order-details.entity";
+import { Order } from "src/order/entity/order.entity";
+import { User } from "src/users/entity/users.entity";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { CustomField } from "./customFields";
 
 @Entity()
@@ -9,8 +12,8 @@ export class Product {
     @Column({type: 'tinytext'})
     name: string;
 
-    @Column({type: 'mediumint'})
-    cost: number;
+    @Column({type: 'tinytext'})
+    price: string;
 
     @Column({type: 'smallint'})
     weight: number;
@@ -24,21 +27,24 @@ export class Product {
     @Column('simple-array')
     category: string[];
 
-    @Column({type: 'tinytext'})
-    weightUnit: string;
-
     @Column('simple-array')
     chartDays: string[];
 
     @Column({type: 'text'})
     description: string;
 
-   /*  @OneToOne(type => CustomField)
-    @JoinTable()
-    customFields: CustomField */
-    @Column('simple-array')
+    @Column({type: 'json'})
     customFields: object[];
 
-    @Column({type: 'json'})
+    @Column({type: 'json', nullable: true})
     images: object[];
+
+    @Column()
+    previewImage: string;
+
+    @Column()
+    userId: number;
+
+    @OneToMany(type => OrderDetails, orderDetails => orderDetails.products)
+    orderDetails: OrderDetails
 }

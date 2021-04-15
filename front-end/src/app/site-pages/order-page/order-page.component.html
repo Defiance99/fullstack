@@ -1,0 +1,65 @@
+<div class="container min-h-100">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 c-mat-table" *ngIf="positions; else empty">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> № </th>
+          <td mat-cell *matCellDef="let element; index as i"> {{i + 1}} </td>
+          <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Название </th>
+          <td mat-cell *matCellDef="let element"  class="product-card__title fw-100" [routerLink]="['/product', element.products.id]"> {{element.products.name}}</td>
+          <td mat-footer-cell *matFooterCellDef >К сумме:</td>
+        </ng-container>
+      
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Цена </th>
+          <td mat-cell *matCellDef="let element"> {{getElementPrice(element) | currency: element.currency: 'symbol-narrow'}}</td>
+          <td mat-footer-cell *matFooterCellDef> {{getTotalPrice() | currency}} </td>
+        </ng-container>
+
+        <!-- Order Column -->
+        <ng-container matColumnDef="orderFuncs">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="product-card__left">
+                <div class="d-flex">
+                  <div class="order__minus" (click)="decrement(element)">-</div>
+                  <div class="order__quantity">{{element.quantity}}</div>
+                  <div class="order__plus" (click)="increment(element)">+</div>
+                </div>
+
+                <div>
+                  <button mat-stroked-button class="primary-bg color-white" (click)="removePosition(element)">
+                    Удалить
+                    <mat-icon matSuffix>remove_shopping_cart</mat-icon>
+                  </button>
+                </div>
+            </div>
+          </td>
+          <td mat-footer-cell *matFooterCellDef>
+            <button mat-stroked-button class="primary-bg color-white" (click)="openDialog()">
+              Подвердить
+            </button>
+            <button mat-stroked-button class="primary-bg color-white button__remove-all" (click)="removeAll()">
+              Удалить все
+            </button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+      </table>
+
+    <ng-template #empty>
+      <p class="text text-center">Список корзины пуст</p>
+    </ng-template>
+</div>

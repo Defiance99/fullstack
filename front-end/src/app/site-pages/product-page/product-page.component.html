@@ -1,0 +1,103 @@
+<div class="single-product" *ngIf="product$ | async as product; else loader">
+    <div class="container">
+        <div class="single-product__wrapper">
+            <div class="single-product__img_wrapper">
+                <div class="single-product__img-preview">
+                    <img [src]=previewImgSrc alt="" class="img previewImg" #previewImg>
+
+                    <div class="product-card__state_wrapper">
+                        <div class="product-card__state product-card__state_hit" *ngIf="product.bonuses[0]">
+                            {{product.bonuses[0]}}</div>
+                        <div class="product-card__state product-card__state_discount" *ngIf="product.bonuses[1]">
+                            {{product.bonuses[1]}}</div>
+                        <div class="product-card__state product-card__state_new" *ngIf="product.bonuses[2]">
+                            {{product.bonuses[2]}}</div>
+                    </div>
+                </div>
+                <div class="single-product__images-catalog">
+                    <div class="single-product__image-catalog_wrapper" (click)="updatePreviewImg(product.previewImage)">
+                        <img [src]=product.previewImage alt="" class="img">
+                    </div>
+                    <div class="single-product__image-catalog_wrapper" *ngFor="let image of product.images" (click)="updatePreviewImg(image)">
+                        <img [src]=image alt="" class="img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="single-product__body">
+                <div class="single-product__title">
+                    {{product.name}}
+                    <span class="weight-text">{{product.weight}}г</span>
+                </div>
+                <div class="single-product__price price">
+                    {{product.price | currency: product.currency: 'symbol-narrow'}}
+                </div>
+                <div class="single-product__description_wrapper">
+                    <div class="single-product__description" *ngIf="product.description">{{product.description}}
+                    </div>
+                    <div class="single-product__description">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Fugit dolorem minus, maiores ad debitis laboriosam saepe fugiat excepturi consectetur dicta
+                    </div>
+                </div>
+                <div class="single-product__custom-fields" *ngIf="product.customFields">
+                    <div *ngFor="let field of product.customFields" class="d-flex">
+                        <div class="single-product__name-field">
+                            <span class="weight-title"> {{field.nameCustomField}}:</span>
+                        </div>
+                        <div class="single-product__value-field">
+                            {{field.valueCustomField}}
+                        </div>
+                    </div>
+                </div>
+                <div class="single-product__flow-category">
+                    <span class="weight-title">Категории:</span>
+                    <div class="single-product__category" 
+                        *ngFor="let category of product.category" 
+                        [routerLink]="['/catalog']"
+                        [queryParams]="{'category': category}" 
+                    >
+                        {{category}}
+                    </div>
+                </div>
+                <div class="single-product__flow-category">
+                    <span class="weight-title">График дней:</span>
+                    <div class="chart-days__item" 
+                        *ngFor="let day of product.chartDays"
+                        [routerLink]="['/catalog']"
+                        [queryParams]="{'chartDays': day}" 
+                    >
+                        {{day}}
+                    </div>
+                </div>
+                <div class="product-card__order-items">
+                    <div class="product-card__left">
+                        <div class="order__minus" (click)="decrement()">-</div>
+                        <div class="order__quantity">{{counter}}</div>
+                        <div class="order__plus" (click)="increment()">+</div>
+                    </div>
+                    <div class="product-card__right">
+                        <button class="order__add-button button" (click)="addToCart(product)">В
+                            корзину</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="single-product__add-info_wrapper" *ngFor="let customFields">
+                    <p class="text single-product__add-info-item"></p>
+                </div> -->
+        </div>
+    </div>
+
+    <div class="container">
+        <p class="related-products__text">Похожие товары:</p>
+        <div class="product-cards" *ngIf="products$ | async as products; else loader">
+            <ng-container *ngFor="let product of products; index as i">
+                <app-product-cart [product]=product></app-product-cart>
+            </ng-container>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>

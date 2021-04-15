@@ -7,5 +7,5 @@ export const imageFileFilter = (req, file, cb) => {
 
 export const editFileName = (req, file, cb) => {
     const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
-    cb(null, `${randomName}-${file.originalname}`)
+    cb(null, `${randomName}-${file.originalname}`);
 };
